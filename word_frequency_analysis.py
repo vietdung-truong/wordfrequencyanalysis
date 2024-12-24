@@ -6,6 +6,8 @@ import nltk
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
+from wordcloud import WordCloud
+import matplotlib.pyplot as plt
 
 # Download required NLTK data
 nltk.download('punkt')
@@ -59,6 +61,13 @@ def get_word_frequencies(text):
     words = text.split()
     return Counter(words)
 
+def generate_wordcloud(word_frequencies):
+    wordcloud = WordCloud(width=800, height=400, background_color='white').generate_from_frequencies(word_frequencies)
+    plt.figure(figsize=(10, 5))
+    plt.imshow(wordcloud, interpolation='bilinear')
+    plt.axis('off')
+    plt.show()
+
 def main(file_path):
     text = load_text(file_path)
     cleaned_text = clean_text(text)
@@ -66,6 +75,8 @@ def main(file_path):
     
     for word, freq in word_frequencies.most_common():
         print(f'{word}: {freq}')
+
+    generate_wordcloud(word_frequencies)
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
