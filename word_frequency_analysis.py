@@ -1,4 +1,5 @@
 import re
+import logging
 from collections import Counter
 import sys
 import requests
@@ -8,6 +9,9 @@ from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 from wordcloud import WordCloud
 import matplotlib.pyplot as plt
+
+# Configure logging
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 # Download required NLTK data
 nltk.download('punkt')
@@ -21,21 +25,25 @@ def load_text(file_path_or_url):
     Load text from a file or URL.
     If 'urllist' is provided, load text from multiple URLs listed in the file.
     """
+    logging.info(f'Loading text from {file_path_or_url}')
     if file_path_or_url == 'urllist':
         combined_text = ''
         with open('urllist', 'r') as url_file:
             for url in url_file:
                 url = url.strip()
                 if url.startswith('http://') or url.startswith('https://'):
+                    logging.info(f'Fetching text from URL: {url}')
                     response = requests.get(url)
                     response.raise_for_status()
                     combined_text += response.text + '\n'
         return combined_text
     elif file_path_or_url.startswith('http://') or file_path_or_url.startswith('https://'):
+        logging.info(f'Fetching text from URL: {file_path_or_url}')
         response = requests.get(file_path_or_url)
         response.raise_for_status()
         return response.text
     else:
+        logging.info(f'Reading text from file: {file_path_or_url}')
         with open(file_path_or_url, 'r', encoding='utf-8') as file:
             return file.read()
 
@@ -44,6 +52,7 @@ def clean_text(text):
     Clean the input text by removing HTML tags, converting to lowercase,
     tokenizing, removing stopwords, and lemmatizing.
     """
+    logging.info('Cleaning text')
     # Remove HTML tags
     text = re.sub(r'<[^>]+>', '', text)
     
@@ -70,6 +79,7 @@ def get_word_frequencies(text):
     Get word frequencies from the cleaned text.
     Only count words that appear more than once and return the top 40 words.
     """
+    logging.info('Calculating word frequencies')
     words = text.split()
     word_counts = Counter(words)
     filtered_counts = Counter({word: count for word, count in word_counts.items() if count > 1})
@@ -79,6 +89,7 @@ def generate_wordcloud(word_frequencies):
     """
     Generate and display a word cloud from word frequencies.
     """
+    logging.info('Generating word cloud')
     wordcloud = WordCloud(width=800, height=400, background_color='white').generate_from_frequencies(word_frequencies)
     plt.figure(figsize=(10, 5))
     plt.imshow(wordcloud, interpolation='bilinear')
@@ -89,18 +100,20 @@ def main(file_path):
     """
     Main function to load text, clean it, get word frequencies, and generate a word cloud.
     """
+    logging.info('Starting main function')
     text = load_text(file_path)
     cleaned_text = clean_text(text)
     word_frequencies = get_word_frequencies(cleaned_text)
     
     for word, freq in word_frequencies.most_common():
-        print(f'{word}: {freq}')
+        logging.info(f'{word}: {freq}')
 
     generate_wordcloud(word_frequencies)
 
 if __name__ == "__main__":
     # Check if the correct number of arguments are provided
     if len(sys.argv) != 2:
+        logging.error("Usage: python word_frequency_analysis.py <file_path>")
         sys.exit("Usage: python word_frequency_analysis.py <file_path>")
     else:
         main(sys.argv[1])
