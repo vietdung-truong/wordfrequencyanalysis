@@ -17,6 +17,10 @@ nltk.download('averaged_perceptron_tagger')
 nltk.download('punkt_tab')
 
 def load_text(file_path_or_url):
+    """
+    Load text from a file or URL.
+    If 'urllist' is provided, load text from multiple URLs listed in the file.
+    """
     if file_path_or_url == 'urllist':
         combined_text = ''
         with open('urllist', 'r') as url_file:
@@ -36,6 +40,10 @@ def load_text(file_path_or_url):
             return file.read()
 
 def clean_text(text):
+    """
+    Clean the input text by removing HTML tags, converting to lowercase,
+    tokenizing, removing stopwords, and lemmatizing.
+    """
     # Remove HTML tags
     text = re.sub(r'<[^>]+>', '', text)
     
@@ -58,10 +66,16 @@ def clean_text(text):
     return ' '.join(cleaned_tokens)
 
 def get_word_frequencies(text):
+    """
+    Get word frequencies from the cleaned text.
+    """
     words = text.split()
     return Counter(words)
 
 def generate_wordcloud(word_frequencies):
+    """
+    Generate and display a word cloud from word frequencies.
+    """
     wordcloud = WordCloud(width=800, height=400, background_color='white').generate_from_frequencies(word_frequencies)
     plt.figure(figsize=(10, 5))
     plt.imshow(wordcloud, interpolation='bilinear')
@@ -69,6 +83,9 @@ def generate_wordcloud(word_frequencies):
     plt.show()
 
 def main(file_path):
+    """
+    Main function to load text, clean it, get word frequencies, and generate a word cloud.
+    """
     text = load_text(file_path)
     cleaned_text = clean_text(text)
     word_frequencies = get_word_frequencies(cleaned_text)
@@ -79,6 +96,7 @@ def main(file_path):
     generate_wordcloud(word_frequencies)
 
 if __name__ == "__main__":
+    # Check if the correct number of arguments are provided
     if len(sys.argv) != 2:
         sys.exit("Usage: python word_frequency_analysis.py <file_path>")
     else:
