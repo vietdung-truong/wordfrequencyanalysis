@@ -68,9 +68,12 @@ def clean_text(text):
 def get_word_frequencies(text):
     """
     Get word frequencies from the cleaned text.
+    Only count words that appear more than once and return the top 40 words.
     """
     words = text.split()
-    return Counter(words)
+    word_counts = Counter(words)
+    filtered_counts = Counter({word: count for word, count in word_counts.items() if count > 1})
+    return Counter(dict(filtered_counts.most_common(40)))
 
 def generate_wordcloud(word_frequencies):
     """
