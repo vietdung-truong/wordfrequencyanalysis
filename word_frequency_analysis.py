@@ -106,7 +106,7 @@ def main(file_path):
     word_frequencies = get_word_frequencies(cleaned_text)
     
     for word, freq in word_frequencies.most_common():
-        logging.info(f'{word}: {freq}')
+        print(f'{word}: {freq}')
 
     generate_wordcloud(word_frequencies)
 
