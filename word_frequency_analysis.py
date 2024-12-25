@@ -78,11 +78,17 @@ def get_word_frequencies(text):
     """
     Get word frequencies from the cleaned text.
     Only count words that appear more than once and return the top 40 words.
+    Exclude words from 'wordfilter' file from the count.
     """
     logging.info('Calculating word frequencies')
+    
+    # Load words to exclude from 'wordfilter' file
+    with open('wordfilter', 'r', encoding='utf-8') as file:
+        excluded_words = set(file.read().splitlines())
+    
     words = text.split()
     word_counts = Counter(words)
-    filtered_counts = Counter({word: count for word, count in word_counts.items() if count > 1})
+    filtered_counts = Counter({word: count for word, count in word_counts.items() if count > 1 and word not in excluded_words})
     return Counter(dict(filtered_counts.most_common(40)))
 
 def generate_wordcloud(word_frequencies):
