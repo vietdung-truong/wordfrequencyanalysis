@@ -102,6 +102,14 @@ def generate_wordcloud(word_frequencies):
     plt.axis('off')
     plt.show()
 
+def save_wordcloud(word_frequencies, filename="exportedwordcloud.png"):
+    """
+    Save the word cloud to a file.
+    """
+    logging.info(f'Saving word cloud to {filename}')
+    wordcloud = WordCloud(width=800, height=400, background_color='white').generate_from_frequencies(word_frequencies)
+    wordcloud.to_file(filename)
+
 def main(file_path):
     """
     Main function to load text, clean it, get word frequencies, and generate a word cloud.
@@ -115,6 +123,7 @@ def main(file_path):
         print(f'{word}: {freq}')
 
     generate_wordcloud(word_frequencies)
+    save_wordcloud(word_frequencies)
 
 if __name__ == "__main__":
     # Check if the correct number of arguments are provided
