@@ -47,6 +47,14 @@ def load_text(file_path_or_url):
         with open(file_path_or_url, 'r', encoding='utf-8') as file:
             return file.read()
 
+def save_text_to_file(text, filename):
+    """
+    Save the given text to a file.
+    """
+    logging.info(f'Saving text to file: {filename}')
+    with open(filename, 'w', encoding='utf-8') as file:
+        file.write(text)
+
 def clean_text(text):
     """
     Clean the input text by removing HTML tags, converting to lowercase,
@@ -108,6 +116,7 @@ def main(file_path):
     """
     logging.info('Starting main function')
     text = load_text(file_path)
+    save_text_to_file(text, 'lastloadedtext')
     cleaned_text = clean_text(text)
     word_frequencies = get_word_frequencies(cleaned_text)
     

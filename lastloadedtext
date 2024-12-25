@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+    <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>What Is AWS Control Tower? - AWS Control Tower</title><meta name="viewport" content="width=device-width,initial-scale=1" /><meta name="assets_root" content="/assets" /><meta name="target_state" content="what-is-control-tower" /><meta name="default_state" content="what-is-control-tower" /><link rel="icon" type="image/ico" href="/assets/images/favicon.ico" /><link rel="shortcut icon" type="image/ico" href="/assets/images/favicon.ico" /><link rel="canonical" href="https://docs.aws.amazon.com/controltower/latest/userguide/what-is-control-tower.html" /><meta name="description" content="AWS Control Tower enables you to enforce and manage governance rules for security, operations, and compliance at scale across all your organizations and accounts in the AWS Cloud." /><meta name="deployment_region" content="IAD" /><meta name="product" content="AWS Control Tower" /><meta name="guide" content="User Guide" /><meta name="abstract" content="Describes key concepts for AWS Control Tower. Provides instructions for setting up and using a landing zone, a secure and compliant multi-account AWS environment for enterprises or organizations at scale." /><meta name="guide-locale" content="en_us" /><meta name="tocs" content="toc-contents.json" /><link rel="canonical" href="https://docs.aws.amazon.com/controltower/latest/userguide/what-is-control-tower.html" /><link rel="alternative" href="https://docs.aws.amazon.com/id_id/controltower/latest/userguide/what-is-control-tower.html" hreflang="id-id" /><link rel="alternative" href="https://docs.aws.amazon.com/id_id/controltower/latest/userguide/what-is-control-tower.html" hreflang="id" /><link rel="alternative" href="https://docs.aws.amazon.com/de_de/controltower/latest/userguide/what-is-control-tower.html" hreflang="de-de" /><link rel="alternative" href="https://docs.aws.amazon.com/de_de/controltower/latest/userguide/what-is-control-tower.html" hreflang="de" /><link rel="alternative" href="https://docs.aws.amazon.com/controltower/latest/userguide/what-is-control-tower.html" hreflang="en-us" /><link rel="alternative" href="https://docs.aws.amazon.com/controltower/latest/userguide/what-is-control-tower.html" hreflang="en" /><link rel="alternative" href="https://docs.aws.amazon.com/es_es/controltower/latest/userguide/what-is-control-tower.html" hreflang="es-es" /><link rel="alternative" href="https://docs.aws.amazon.com/es_es/controltower/latest/userguide/what-is-control-tower.html" hreflang="es" /><link rel="alternative" href="https://docs.aws.amazon.com/fr_fr/controltower/latest/userguide/what-is-control-tower.html" hreflang="fr-fr" /><link rel="alternative" href="https://docs.aws.amazon.com/fr_fr/controltower/latest/userguide/what-is-control-tower.html" hreflang="fr" /><link rel="alternative" href="https://docs.aws.amazon.com/it_it/controltower/latest/userguide/what-is-control-tower.html" hreflang="it-it" /><link rel="alternative" href="https://docs.aws.amazon.com/it_it/controltower/latest/userguide/what-is-control-tower.html" hreflang="it" /><link rel="alternative" href="https://docs.aws.amazon.com/ja_jp/controltower/latest/userguide/what-is-control-tower.html" hreflang="ja-jp" /><link rel="alternative" href="https://docs.aws.amazon.com/ja_jp/controltower/latest/userguide/what-is-control-tower.html" hreflang="ja" /><link rel="alternative" href="https://docs.aws.amazon.com/ko_kr/controltower/latest/userguide/what-is-control-tower.html" hreflang="ko-kr" /><link rel="alternative" href="https://docs.aws.amazon.com/ko_kr/controltower/latest/userguide/what-is-control-tower.html" hreflang="ko" /><link rel="alternative" href="https://docs.aws.amazon.com/pt_br/controltower/latest/userguide/what-is-control-tower.html" hreflang="pt-br" /><link rel="alternative" href="https://docs.aws.amazon.com/pt_br/controltower/latest/userguide/what-is-control-tower.html" hreflang="pt" /><link rel="alternative" href="https://docs.aws.amazon.com/zh_cn/controltower/latest/userguide/what-is-control-tower.html" hreflang="zh-cn" /><link rel="alternative" href="https://docs.aws.amazon.com/zh_tw/controltower/latest/userguide/what-is-control-tower.html" hreflang="zh-tw" /><link rel="alternative" href="https://docs.aws.amazon.com/controltower/latest/userguide/what-is-control-tower.html" hreflang="x-default" /><meta name="feedback-item" content="Control Tower" /><meta name="this_doc_product" content="AWS Control Tower" /><meta name="this_doc_guide" content="User Guide" /><script defer="" src="/assets/r/vendor4.js?version=2021.12.02"></script><script defer="" src="/assets/r/vendor3.js?version=2021.12.02"></script><script defer="" src="/assets/r/vendor1.js?version=2021.12.02"></script><script defer="" src="/assets/r/awsdocs-common.js?version=2021.12.02"></script><script defer="" src="/assets/r/awsdocs-doc-page.js?version=2021.12.02"></script><link href="/assets/r/vendor4.css?version=2021.12.02" rel="stylesheet" /><link href="/assets/r/awsdocs-common.css?version=2021.12.02" rel="stylesheet" /><link href="/assets/r/awsdocs-doc-page.css?version=2021.12.02" rel="stylesheet" /><script async="" id="awsc-panorama-bundle" type="text/javascript" src="https://prod.pa.cdn.uis.awsstatic.com/panorama-nav-init.js" data-config="{'appEntity':'aws-documentation','region':'us-east-1','service':'controltower'}"></script><meta id="panorama-serviceSubSection" value="User Guide" /><meta id="panorama-serviceConsolePage" value="What Is AWS Control Tower?" /></head><body class="awsdocs awsui"><div class="awsdocs-container"><awsdocs-header></awsdocs-header><awsui-app-layout id="app-layout" class="awsui-util-no-gutters" ng-controller="ContentController as $ctrl" header-selector="awsdocs-header" navigation-hide="false" navigation-width="$ctrl.navWidth" navigation-open="$ctrl.navOpen" navigation-change="$ctrl.onNavChange($event)" tools-hide="$ctrl.hideTools" tools-width="$ctrl.toolsWidth" tools-open="$ctrl.toolsOpen" tools-change="$ctrl.onToolsChange($event)"><div id="guide-toc" dom-region="navigation"><awsdocs-toc></awsdocs-toc></div><div id="main-column" dom-region="content" tabindex="-1"><awsdocs-view class="awsdocs-view"><div id="awsdocs-content"><head><title>What Is AWS Control Tower? - AWS Control Tower</title><meta name="pdf" content="/pdfs/controltower/latest/userguide/controltower-ug.pdf#what-is-control-tower" /><meta name="rss" content="control-tower-guide.rss" /><meta name="forums" content="https://repost.aws/tags/TA8lQh6CBhTq6yxP2OZEkWVg" /><meta name="feedback" content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Control%20Tower&amp;topic_url=https://docs.aws.amazon.com/en_us/controltower/latest/userguide/what-is-control-tower.html" /><meta name="feedback-yes" content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/en_us/controltower/latest/userguide/what-is-control-tower.html" /><meta name="feedback-no" content="feedbackno.html?topic_url=https://docs.aws.amazon.com/en_us/controltower/latest/userguide/what-is-control-tower.html" /><meta name="keywords" content="what,is,AWS Control Tower" /><script type="application/ld+json">
+{
+    "@context" : "https://schema.org",
+    "@type" : "BreadcrumbList",
+    "itemListElement" : [
+      {
+        "@type" : "ListItem",
+        "position" : 1,
+        "name" : "AWS",
+        "item" : "https://aws.amazon.com"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 2,
+        "name" : "AWS Control Tower",
+        "item" : "https://docs.aws.amazon.com/controltower/index.html"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 3,
+        "name" : "User Guide",
+        "item" : "https://docs.aws.amazon.com/controltower/latest/userguide"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 4,
+        "name" : "What Is AWS Control Tower?",
+        "item" : "https://docs.aws.amazon.com/controltower/latest/userguide/what-is-control-tower.html"
+      }
+    ]
+}
+</script></head><body><div id="main"><div style="display: none"><a href="/pdfs/controltower/latest/userguide/controltower-ug.pdf#what-is-control-tower" target="_blank" rel="noopener noreferrer" title="Open PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentation</a><a href="/controltower/index.html">AWS Control Tower</a><a href="what-is-control-tower.html">User Guide</a></div><div id="page-toc-src"><a href="#features">Features</a><a href="#related-services">How AWS Control Tower interacts with other AWS services</a><a href="#first-time-user">Are You a First-Time User of AWS Control Tower?</a></div><awsdocs-doc-page-banner></awsdocs-doc-page-banner><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="what-is-control-tower">What Is AWS Control Tower?</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>AWS Control Tower offers a straightforward way to set up and govern an AWS multi-account environment,
+  following prescriptive best practices. AWS Control Tower <em>orchestrates</em>
+  the capabilities of several other <a href="https://docs.aws.amazon.com/controltower/latest/userguide/integrated-services.html">AWS services</a>, including 
+  AWS Organizations, AWS Service Catalog, and AWS IAM Identity Center, to build a landing zone in less than
+  an hour. Resources are set up and managed on your behalf. </p><p>AWS Control Tower orchestration extends the capabilities of AWS Organizations. To help keep your
+  organizations and accounts from <em>drift</em>, which is divergence from
+  best practices, AWS Control Tower applies controls (sometimes called <em>guardrails</em>). For example, you
+  can use controls to help ensure that security logs and necessary cross-account access
+  permissions are created, and not altered.</p><p>If you are hosting more than a handful of accounts, itâs beneficial to have an orchestration
+  layer that facilitates account deployment and account governance. You can adopt AWS Control Tower as your
+  primary way to provision accounts and infrastructure. With AWS Control Tower, you can more easily adhere to
+  corporate standards, meet regulatory requirements, and follow best practices.</p><p>AWS Control Tower enables end users on your distributed teams to provision new AWS accounts quickly,
+  by means of configurable account templates in Account Factory. Meanwhile, your central cloud
+  administrators can monitor that all accounts are aligned with established, company-wide compliance
+  policies.</p><p>In short, AWS Control Tower offers the easiest way to set up and govern a secure, compliant,
+  multi-account AWS environment based on best practices established by working with thousands of
+  enterprises. For more information about working with AWS Control Tower and the best practices outlined
+  in the AWS multi-account strategy, see <a href="./aws-multi-account-landing-zone.html#multi-account-guidance">AWS multi-account strategy: Best practices
+                guidance</a>.</p>
+  <h2 id="features">Features</h2>
+  <p>AWS Control Tower has the following features:</p>
+
+  <div class="itemizedlist">
+    
+    
+    
+    
+  <ul class="itemizedlist"><li class="listitem">
+    <p><b>Landing zone</b> â A landing zone is a well-architected,
+      <a href="https://docs.aws.amazon.com/whitepapers/latest/organizing-your-aws-environment/appendix-e-establish-multi-account.html#example-workloads-flat-structure">multi-account environment</a> that's based on security and compliance best practices. It
+     is the enterprise-wide container that holds all of your organizational units (OUs), accounts,
+     users, and other resources that you want to be subject to compliance regulation. A landing zone
+     can scale to fit the needs of an enterprise of any size.</p>
+   </li><li class="listitem">
+    <p><b>Controls</b> â A control (sometimes called a <em>guardrail</em>) is a high-level rule that
+     provides ongoing governance for your overall AWS environment. It's expressed in plain language.
+     Three kinds of controls exist: <em>preventive</em>, <em>detective</em>, and <em>proactive</em>. Three categories of guidance apply to
+     controls: <em>mandatory</em>, <em>strongly recommended</em>, or
+      <em>elective</em>. For more information about controls, see <a href="./how-control-tower-works.html#how-controls-work">How controls work</a>.</p>
+   </li><li class="listitem">
+    <p><b>Account Factory</b> â An Account Factory is a configurable
+     account template that helps to standardize the provisioning of new accounts with pre-approved
+     account configurations. AWS Control Tower offers a built-in Account Factory that helps automate the account
+     provisioning workflow in your organization. For more information, see <a href="./account-factory.html">Provision and manage accounts with Account Factory</a>.</p>
+   </li><li class="listitem">
+    <p><b>Dashboard</b> â The dashboard offers continuous
+     oversight of your landing zone to your team of central cloud administrators. Use the dashboard to
+     see provisioned accounts across your enterprise, controls enabled for policy enforcement,
+     controls enabled for continuous detection of policy non-conformance, and noncompliant
+     resources organized by accounts and OUs.</p>
+   </li></ul></div>
+
+  
+  <h2 id="related-services">How AWS Control Tower interacts with other AWS services</h2>
+
+  <p>AWS Control Tower is built on top of trusted and reliable AWS services including AWS Service Catalog, AWS IAM Identity Center,
+   and AWS Organizations. For more information, see <a href="./integrated-services.html">Integrated services</a>.</p>
+
+  <p>You can incorporate AWS Control Tower with other AWS services into a solution that helps you migrate
+   your existing workloads to AWS. For more information, see <a href="https://aws.amazon.com/blogs/mt/how-to-take-advantage-of-aws-control-tower-and-cloudendure-to-migrate-workloads-to-aws/" rel="noopener noreferrer" target="_blank"><span>How to take advantage of AWS Control Tower and CloudEndure to migrate workloads to
+   AWS</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>.</p>
+
+  <div class="itemizedlist">
+   <h6>Configuration, Governance, and Extensibility</h6>
+    
+    
+    
+  <ul class="itemizedlist"><li class="listitem">
+    <p><em>Automated account configuration:</em> AWS Control Tower automates
+     account deployment and enrollment by means of an Account Factory (or âvending machineâ), which
+     is built as an abstraction on top of provisioned products in AWS Service Catalog. The Account
+     Factory can create and enroll AWS accounts, and it automates the process of applying controls
+     and policies to those accounts.</p>
+   </li><li class="listitem">
+    <p><em>Centralized governance:</em> By employing the capabilities
+     of AWS Organizations, AWS Control Tower sets up a framework that ensures consistent compliance and
+     governance across your multi-account environment. The AWS Organizations service provides
+     essential capabilities for managing a multi-account environment, including central governance
+     and management of accounts, account creation from AWS Organizations APIs, and service control policies (SCPs). </p>
+    <p></p>
+   </li><li class="listitem">
+    <p><em>Extensibility:</em> You can build or extend your own
+     AWS Control Tower environment by working directly in AWS Organizations, as well as in the AWS Control Tower
+     console. You can see your changes reflected in AWS Control Tower after you register your existing
+     organizations and enroll your existing accounts into AWS Control Tower. You can update your AWS Control Tower
+     landing zone to reflect your changes. If your workloads require further advanced capabilities,
+     you can leverage other AWS partner solutions along with AWS Control Tower. </p>
+    <p></p>
+   </li></ul></div>
+
+  
+  <h2 id="first-time-user">Are You a First-Time User of AWS Control Tower?</h2>
+
+  <p>If youâre a first-time user of this service, we recommend that you read the
+   following:</p>
+
+  <div class="orderedlist">
+    
+    
+    
+    
+    
+  <ol><li>
+    <p>If you need more information about how to plan and organize your landing zone, see <a href="./planning-your-deployment.html">Plan your AWS Control Tower landing zone</a> and <a href="./aws-multi-account-landing-zone.html">AWS multi-account strategy for your
+            AWS Control Tower landing zone</a>.</p>
+   </li><li>
+    <p>If youâre ready to create your first landing zone, see <a href="./getting-started-with-control-tower.html">Getting started with AWS Control Tower</a>.</p>
+   </li><li>
+    <p>For information on drift detection and prevention, see <a href="./drift.html">Detect and resolve drift in AWS Control Tower</a>.</p>
+   </li><li>
+    <p>For security details, see <a href="./security.html">Security in AWS Control Tower</a>.</p>
+   </li><li>
+    <p>For information on updating your landing zone and member accounts, see <a href="./configuration-updates.html">Configuration update management in AWS Control Tower</a>.</p>
+   </li></ol></div>
+
+ <awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="Warning" /> <strong>Javascript is disabled or is unavailable in your browser.</strong></p><p>To use the Amazon Web Services Documentation, Javascript must be enabled. Please refer to your browser's Help pages for instructions.</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">Document Conventions</a></div><div class="prev-next"><div id="next" class="next-link" accesskey="n" href="./how-control-tower-works.html">How it works</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">Did this page help you? - Yes</div><div class="content"><p>Thanks for letting us know we're doing a good job!</p><p>If you've got a moment, please tell us what we did right so we can do more of it.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Control Tower&amp;topic_url=https://docs.aws.amazon.com/en_us/controltower/latest/userguide/what-is-control-tower.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">Did this page help you? - No</div><div class="content"><p>Thanks for letting us know this page needs work. We're sorry we let you down.</p><p>If you've got a moment, please tell us how we can make the documentation better.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Control Tower&amp;topic_url=https://docs.aws.amazon.com/en_us/controltower/latest/userguide/what-is-control-tower.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>
+<!DOCTYPE html>
+    <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>How AWS Control Tower works - AWS Control Tower</title><meta name="viewport" content="width=device-width,initial-scale=1" /><meta name="assets_root" content="/assets" /><meta name="target_state" content="how-control-tower-works" /><meta name="default_state" content="how-control-tower-works" /><link rel="icon" type="image/ico" href="/assets/images/favicon.ico" /><link rel="shortcut icon" type="image/ico" href="/assets/images/favicon.ico" /><link rel="canonical" href="https://docs.aws.amazon.com/controltower/latest/userguide/how-control-tower-works.html" /><meta name="description" content="How AWS Control Tower works." /><meta name="deployment_region" content="IAD" /><meta name="product" content="AWS Control Tower" /><meta name="guide" content="User Guide" /><meta name="abstract" content="Describes key concepts for AWS Control Tower. Provides instructions for setting up and using a landing zone, a secure and compliant multi-account AWS environment for enterprises or organizations at scale." /><meta name="guide-locale" content="en_us" /><meta name="tocs" content="toc-contents.json" /><link rel="canonical" href="https://docs.aws.amazon.com/controltower/latest/userguide/how-control-tower-works.html" /><link rel="alternative" href="https://docs.aws.amazon.com/id_id/controltower/latest/userguide/how-control-tower-works.html" hreflang="id-id" /><link rel="alternative" href="https://docs.aws.amazon.com/id_id/controltower/latest/userguide/how-control-tower-works.html" hreflang="id" /><link rel="alternative" href="https://docs.aws.amazon.com/de_de/controltower/latest/userguide/how-control-tower-works.html" hreflang="de-de" /><link rel="alternative" href="https://docs.aws.amazon.com/de_de/controltower/latest/userguide/how-control-tower-works.html" hreflang="de" /><link rel="alternative" href="https://docs.aws.amazon.com/controltower/latest/userguide/how-control-tower-works.html" hreflang="en-us" /><link rel="alternative" href="https://docs.aws.amazon.com/controltower/latest/userguide/how-control-tower-works.html" hreflang="en" /><link rel="alternative" href="https://docs.aws.amazon.com/es_es/controltower/latest/userguide/how-control-tower-works.html" hreflang="es-es" /><link rel="alternative" href="https://docs.aws.amazon.com/es_es/controltower/latest/userguide/how-control-tower-works.html" hreflang="es" /><link rel="alternative" href="https://docs.aws.amazon.com/fr_fr/controltower/latest/userguide/how-control-tower-works.html" hreflang="fr-fr" /><link rel="alternative" href="https://docs.aws.amazon.com/fr_fr/controltower/latest/userguide/how-control-tower-works.html" hreflang="fr" /><link rel="alternative" href="https://docs.aws.amazon.com/it_it/controltower/latest/userguide/how-control-tower-works.html" hreflang="it-it" /><link rel="alternative" href="https://docs.aws.amazon.com/it_it/controltower/latest/userguide/how-control-tower-works.html" hreflang="it" /><link rel="alternative" href="https://docs.aws.amazon.com/ja_jp/controltower/latest/userguide/how-control-tower-works.html" hreflang="ja-jp" /><link rel="alternative" href="https://docs.aws.amazon.com/ja_jp/controltower/latest/userguide/how-control-tower-works.html" hreflang="ja" /><link rel="alternative" href="https://docs.aws.amazon.com/ko_kr/controltower/latest/userguide/how-control-tower-works.html" hreflang="ko-kr" /><link rel="alternative" href="https://docs.aws.amazon.com/ko_kr/controltower/latest/userguide/how-control-tower-works.html" hreflang="ko" /><link rel="alternative" href="https://docs.aws.amazon.com/pt_br/controltower/latest/userguide/how-control-tower-works.html" hreflang="pt-br" /><link rel="alternative" href="https://docs.aws.amazon.com/pt_br/controltower/latest/userguide/how-control-tower-works.html" hreflang="pt" /><link rel="alternative" href="https://docs.aws.amazon.com/zh_cn/controltower/latest/userguide/how-control-tower-works.html" hreflang="zh-cn" /><link rel="alternative" href="https://docs.aws.amazon.com/zh_tw/controltower/latest/userguide/how-control-tower-works.html" hreflang="zh-tw" /><link rel="alternative" href="https://docs.aws.amazon.com/controltower/latest/userguide/how-control-tower-works.html" hreflang="x-default" /><meta name="feedback-item" content="Control Tower" /><meta name="this_doc_product" content="AWS Control Tower" /><meta name="this_doc_guide" content="User Guide" /><script defer="" src="/assets/r/vendor4.js?version=2021.12.02"></script><script defer="" src="/assets/r/vendor3.js?version=2021.12.02"></script><script defer="" src="/assets/r/vendor1.js?version=2021.12.02"></script><script defer="" src="/assets/r/awsdocs-common.js?version=2021.12.02"></script><script defer="" src="/assets/r/awsdocs-doc-page.js?version=2021.12.02"></script><link href="/assets/r/vendor4.css?version=2021.12.02" rel="stylesheet" /><link href="/assets/r/awsdocs-common.css?version=2021.12.02" rel="stylesheet" /><link href="/assets/r/awsdocs-doc-page.css?version=2021.12.02" rel="stylesheet" /><script async="" id="awsc-panorama-bundle" type="text/javascript" src="https://prod.pa.cdn.uis.awsstatic.com/panorama-nav-init.js" data-config="{'appEntity':'aws-documentation','region':'us-east-1','service':'controltower'}"></script><meta id="panorama-serviceSubSection" value="User Guide" /><meta id="panorama-serviceConsolePage" value="How AWS Control Tower works" /></head><body class="awsdocs awsui"><div class="awsdocs-container"><awsdocs-header></awsdocs-header><awsui-app-layout id="app-layout" class="awsui-util-no-gutters" ng-controller="ContentController as $ctrl" header-selector="awsdocs-header" navigation-hide="false" navigation-width="$ctrl.navWidth" navigation-open="$ctrl.navOpen" navigation-change="$ctrl.onNavChange($event)" tools-hide="$ctrl.hideTools" tools-width="$ctrl.toolsWidth" tools-open="$ctrl.toolsOpen" tools-change="$ctrl.onToolsChange($event)"><div id="guide-toc" dom-region="navigation"><awsdocs-toc></awsdocs-toc></div><div id="main-column" dom-region="content" tabindex="-1"><awsdocs-view class="awsdocs-view"><div id="awsdocs-content"><head><title>How AWS Control Tower works - AWS Control Tower</title><meta name="pdf" content="/pdfs/controltower/latest/userguide/controltower-ug.pdf#how-control-tower-works" /><meta name="rss" content="control-tower-guide.rss" /><meta name="forums" content="https://repost.aws/tags/TA8lQh6CBhTq6yxP2OZEkWVg" /><meta name="feedback" content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Control%20Tower&amp;topic_url=https://docs.aws.amazon.com/en_us/controltower/latest/userguide/how-control-tower-works.html" /><meta name="feedback-yes" content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/en_us/controltower/latest/userguide/how-control-tower-works.html" /><meta name="feedback-no" content="feedbackno.html?topic_url=https://docs.aws.amazon.com/en_us/controltower/latest/userguide/how-control-tower-works.html" /><script type="application/ld+json">
+{
+    "@context" : "https://schema.org",
+    "@type" : "BreadcrumbList",
+    "itemListElement" : [
+      {
+        "@type" : "ListItem",
+        "position" : 1,
+        "name" : "AWS",
+        "item" : "https://aws.amazon.com"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 2,
+        "name" : "AWS Control Tower",
+        "item" : "https://docs.aws.amazon.com/controltower/index.html"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 3,
+        "name" : "User Guide",
+        "item" : "https://docs.aws.amazon.com/controltower/latest/userguide"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 4,
+        "name" : "What Is AWS Control Tower?",
+        "item" : "https://docs.aws.amazon.com/controltower/latest/userguide/what-is-control-tower.html"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 5,
+        "name" : "How AWS Control Tower works",
+        "item" : "https://docs.aws.amazon.com/controltower/latest/userguide/what-is-control-tower.html"
+      }
+    ]
+}
+</script></head><body><div id="main"><div style="display: none"><a href="/pdfs/controltower/latest/userguide/controltower-ug.pdf#how-control-tower-works" target="_blank" rel="noopener noreferrer" title="Open PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentation</a><a href="/controltower/index.html">AWS Control Tower</a><a href="what-is-control-tower.html">User Guide</a></div><div id="page-toc-src"><a href="#landing-zone-structure">Structure of an AWS Control Tower Landing Zone</a><a href="#how-it-works-setup">What happens when you set up a landing zone</a><a href="#what-shared">What are the shared accounts?</a><a href="#how-controls-work">How controls work</a><a href="#stacksets-how">How AWS Control Tower works with StackSets </a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="how-control-tower-works">How AWS Control Tower works</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>This section describes at a high level how AWS Control Tower works. Your landing zone is a
+		well-architected multi-account environment for all of your AWS resources. You can use this
+		environment to enforce compliance regulations on all of your AWS accounts.</p>
+		<h2 id="landing-zone-structure">Structure of an AWS Control Tower Landing Zone</h2>
+		<p>The structure of a landing zone in AWS Control Tower is as follows:</p>
+
+		<div class="itemizedlist">
+			 
+			 
+			 
+
+			 
+			 
+		<ul class="itemizedlist"><li class="listitem">
+				<p><b>Root</b> â The parent that contains all
+					other OUs in your landing zone.
+					</p>
+			</li><li class="listitem">
+				<p><b>Security OU</b> â This OU contains the Log
+					Archive and Audit accounts. These accounts often are referred to as <em>shared accounts</em>. When you launch your landing zone,
+					you can choose customized names for these shared accounts, and you have the
+					option to bring existing AWS accounts into AWS Control Tower for security and logging.
+					However, these cannot be renamed later, and existing accounts cannot be added
+					for security and logging after initial launch.</p>
+			</li><li class="listitem">
+				<p><b>Sandbox OU</b> â The Sandbox OU is created
+					when you launch your landing zone, if you enable it. This and other registered OUs
+					contain the enrolled accounts that your users work with to perform their AWS
+					workloads.</p>
+			</li><li class="listitem">
+				<p><b>IAM Identity Center directory</b> â This directory houses
+					your IAM Identity Center users. It defines the scope of permissions for each IAM Identity Center
+					user.</p>
+			</li><li class="listitem">
+				<p><b>IAM Identity Center users</b> â These are the identities
+					that your users can assume to perform their AWS workloads in your
+					landing zone.</p>
+			</li></ul></div>
+
+	 
+		<h2 id="how-it-works-setup">What happens when you set up a landing zone</h2>
+
+		<p>When you set up a landing zone, AWS Control Tower performs the following actions in your
+			management account on your behalf:</p>
+
+		<div class="itemizedlist">
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+		<ul class="itemizedlist"><li class="listitem">
+				<p>Creates two AWS Organizations organizational units (OUs): Security, and Sandbox
+					(optional), contained within the organizational root structure.</p>
+			</li><li class="listitem">
+				<p>Creates or adds two shared accounts in the Security OU: the Log Archive account and
+					the Audit account.</p>
+			</li><li class="listitem">
+				<p>Creates a cloud-native directory in IAM Identity Center, with preconfigured groups and
+					single sign-on access, if you choose the default AWS Control Tower configuration, or it allows you to self-manage your identity provider.</p>
+			</li><li class="listitem">
+				<p>Applies all mandatory, preventive controls to enforce policies.</p>
+			</li><li class="listitem">
+				<p>Applies all mandatory, detective controls to detect configuration
+					violations.</p>
+			</li><li class="listitem">
+				<p><em>Preventive controls are not applied to the management account.</em></p>
+			</li><li class="listitem">
+				<p>Except for the management account, controls are applied to the organization
+					as a whole.</p>
+			</li></ul></div>
+	<div class="itemizedlist">
+		<h6>Safely Managing Resources Within Your AWS Control Tower Landing Zone and Accounts</h6>
+		 
+
+		 
+	<ul class="itemizedlist"><li class="listitem">
+			<p>When you create your landing zone, a number of AWS resources are created. To use
+				AWS Control Tower, you must not modify or delete these AWS Control Tower managed resources outside of
+				the supported methods described in this guide. Deleting or modifying these resources
+				will cause your landing zone to enter an unknown state. For details, see <a href="./getting-started-guidance.html">Guidance for creating and modifying AWS Control Tower
+    resources</a></p>
+		</li><li class="listitem">
+
+			<p>When you enable optional controls (those with <em>strongly
+					recommended or elective </em> guidance), AWS Control Tower creates AWS resources
+				that it manages in your accounts. Do not modify or delete resources created by
+				AWS Control Tower. Doing so can result in the controls entering an unknown state. </p>
+		</li></ul></div>
+		<h2 id="what-shared">What are the shared accounts?</h2>
+
+		<p>In AWS Control Tower, the shared accounts in your landing zone are provisioned 
+			during setup: the management account, the log archive account, and the audit
+			account.</p>
+
+
+		 
+			<h3 id="what-is-mgmt">What is the management account?</h3>
+
+			<p>This is the account that you created specifically for your landing zone. This account
+				is used for billing for everything in your landing zone. It's also used for Account Factory
+				provisioning of accounts, as well as to manage OUs and controls.</p>
+
+			<div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>Note</h6></div><div class="awsdocs-note-text"><p>It is not recommended to run any type of production workloads from an AWS Control Tower
+					management account. Create a separate AWS Control Tower account to run your workloads.
+				</p></div></div>
+			
+			<p>For more information, see <a href="./accounts.html#mgmt-account">Management account</a>.</p>
+
+		 
+
+
+		 
+			<h3 id="what-is-log-archive">What is the log archive account?</h3>
+
+			<p>This account works as a repository for logs of API activities and resource
+				configurations from all accounts in the landing zone.</p>
+			
+			
+			<p>For more information, see <a href="./accounts.html#log-archive-account">Log archive account</a>.</p>
+
+		 
+
+		 
+			<h3 id="what-is-audit">What is the audit account?</h3>
+
+			<p>The audit account is a restricted account that's designed to give your security
+				and compliance teams read and write access to all accounts in your landing zone. From the
+				audit account, you have programmatic access to review accounts, by means of a role
+				that is granted to Lambda functions only. The audit account does not allow you to
+				log in to other accounts manually. For more information about Lambda functions and
+				roles, see <a href="https://aws.amazon.com/premiumsupport/knowledge-center/lambda-function-assume-iam-role" rel="noopener noreferrer" target="_blank"><span>Configure a Lambda function to assume a role from another AWS account</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>.
+				
+			</p>
+			
+			
+			<p>For more information, see <a href="./accounts.html#audit-account">Audit account</a>.</p>
+
+		 
+		<h2 id="how-controls-work">How controls work</h2>
+
+		<p>A control is a high-level rule that provides ongoing governance for your overall AWS
+			environment. Each control enforces a single rule, and it's expressed in plain
+			language. You can change the elective or strongly recommended controls that are in
+			force, at any time, from the AWS Control Tower console or the AWS Control Tower APIs. Mandatory controls are always applied,
+			and they can't be changed.</p>
+
+		<p>Preventive controls prevent actions from occurring. For example, the elective
+			control called <b>Disallow Changes to Bucket Policy for Amazon S3
+				Buckets</b> (Previously called <b>Disallow Policy Changes to Log
+				Archive</b>) prevents any IAM policy changes within the log archive shared
+			account. Any attempt to perform a prevented action is denied and logged in CloudTrail. The
+			resource is also logged in AWS Config.</p>
+
+		<p>Detective controls detect specific events when they occur and log the action in
+			CloudTrail. For example, the strongly recommended control called <b>Detect Whether
+				Encryption is Enabled for Amazon EBS Volumes Attached to Amazon EC2
+				Instances</b> detects whether an unencrypted Amazon EBS volume is attached to an
+			EC2 instance in your landing zone.</p>
+		
+		<p>Proactive controls check whether resources are compliant with your company policies
+			and objectives, before the resources are provisioned in your accounts. If the resources
+			are out of compliance, they are not provisioned. Proactive controls monitor resources
+			that would be deployed in your accounts by means of AWS CloudFormation templates.</p>
+
+		<p><em>For those who are familiar with AWS:</em> In AWS Control Tower
+			preventive controls are implemented with Service Control Policies (SCPs). Detective
+			controls are implemented with AWS Config rules. Proactive controls are implemented with AWS CloudFormation hooks.</p>
+
+		 
+			<h3 id="how-controls-related">Related Topics </h3>
+
+			<div class="itemizedlist">
+			
+				 
+				
+			
+			<ul class="itemizedlist"><li class="listitem">
+					<p><a href="./drift.html">Detect and resolve drift in AWS Control Tower</a></p>
+				</li></ul></div>
+
+		 
+	 
+		<h2 id="stacksets-how">How AWS Control Tower works with StackSets </h2>
+
+		<p></p>
+
+		<p>AWS Control Tower uses AWS CloudFormation StackSets to set up resources in your accounts. Each
+			stack set has StackInstances that correspond to accounts, and to AWS Regions per
+			account. AWS Control Tower deploys one stack set instance per account and Region.</p>
+
+		<p>AWS Control Tower applies updates to certain accounts and AWS Regions selectively, based on
+			AWS CloudFormation parameters. When updates are applied to some stack instances, other stack
+			instances may be left in <b>Outdated</b> status. This behavior is expected
+			and normal.</p>
+
+		<p>When a stack instance goes into <b>Outdated</b> status, it usually means
+			that the stack corresponding to that stack instance is not aligned with the latest
+			template in the stack set. The stack remains in the older template, so it might not
+			include the latest resources or parameters. The stack is still completely usable.</p>
+
+		<p> Here's a quick summary of what behavior to expect, based on AWS CloudFormation
+			parameters that are specified during an update:</p>
+
+		<p>If the stack set update includes changes to the template (that is, if the
+				<code class="code">TemplateBody</code> or <code class="code">TemplateURL</code> properties are specified), or
+			if the <code class="code">Parameters</code> property is specified, AWS CloudFormation marks all stack
+			instances with a status of <b>Outdated</b> prior to updating the stack
+			instances in the specified accounts and AWS Regions. If the stack set update does not
+			include changes to the template or parameters, AWS CloudFormation updates the stack
+			instances in the specified accounts and Regions, while leaving all other stack instances
+			with their existing stack instance status. To update all of the stack instances
+			associated with a stack set, do not specify the <code class="code">Accounts</code> or
+				<code class="code">Regions</code> properties.</p>
+
+		<p>For more information, see <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-update.html">Update Your Stack
+				Set</a> in the AWS CloudFormation User Guide.</p>
+
+	<awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="Warning" /> <strong>Javascript is disabled or is unavailable in your browser.</strong></p><p>To use the Amazon Web Services Documentation, Javascript must be enabled. Please refer to your browser's Help pages for instructions.</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">Document Conventions</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./what-is-control-tower.html">What Is AWS Control Tower?</div><div id="next" class="next-link" accesskey="n" href="./terminology.html">Terminology</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">Did this page help you? - Yes</div><div class="content"><p>Thanks for letting us know we're doing a good job!</p><p>If you've got a moment, please tell us what we did right so we can do more of it.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Control Tower&amp;topic_url=https://docs.aws.amazon.com/en_us/controltower/latest/userguide/how-control-tower-works.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">Did this page help you? - No</div><div class="content"><p>Thanks for letting us know this page needs work. We're sorry we let you down.</p><p>If you've got a moment, please tell us how we can make the documentation better.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Control Tower&amp;topic_url=https://docs.aws.amazon.com/en_us/controltower/latest/userguide/how-control-tower-works.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>
+<!DOCTYPE html>
+    <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Terminology - AWS Control Tower</title><meta name="viewport" content="width=device-width,initial-scale=1" /><meta name="assets_root" content="/assets" /><meta name="target_state" content="terminology" /><meta name="default_state" content="terminology" /><link rel="icon" type="image/ico" href="/assets/images/favicon.ico" /><link rel="shortcut icon" type="image/ico" href="/assets/images/favicon.ico" /><link rel="canonical" href="https://docs.aws.amazon.com/controltower/latest/userguide/terminology.html" /><meta name="description" content="Learn about AWS Control Tower vocabulary." /><meta name="deployment_region" content="IAD" /><meta name="product" content="AWS Control Tower" /><meta name="guide" content="User Guide" /><meta name="abstract" content="Describes key concepts for AWS Control Tower. Provides instructions for setting up and using a landing zone, a secure and compliant multi-account AWS environment for enterprises or organizations at scale." /><meta name="guide-locale" content="en_us" /><meta name="tocs" content="toc-contents.json" /><link rel="canonical" href="https://docs.aws.amazon.com/controltower/latest/userguide/terminology.html" /><link rel="alternative" href="https://docs.aws.amazon.com/id_id/controltower/latest/userguide/terminology.html" hreflang="id-id" /><link rel="alternative" href="https://docs.aws.amazon.com/id_id/controltower/latest/userguide/terminology.html" hreflang="id" /><link rel="alternative" href="https://docs.aws.amazon.com/de_de/controltower/latest/userguide/terminology.html" hreflang="de-de" /><link rel="alternative" href="https://docs.aws.amazon.com/de_de/controltower/latest/userguide/terminology.html" hreflang="de" /><link rel="alternative" href="https://docs.aws.amazon.com/controltower/latest/userguide/terminology.html" hreflang="en-us" /><link rel="alternative" href="https://docs.aws.amazon.com/controltower/latest/userguide/terminology.html" hreflang="en" /><link rel="alternative" href="https://docs.aws.amazon.com/es_es/controltower/latest/userguide/terminology.html" hreflang="es-es" /><link rel="alternative" href="https://docs.aws.amazon.com/es_es/controltower/latest/userguide/terminology.html" hreflang="es" /><link rel="alternative" href="https://docs.aws.amazon.com/fr_fr/controltower/latest/userguide/terminology.html" hreflang="fr-fr" /><link rel="alternative" href="https://docs.aws.amazon.com/fr_fr/controltower/latest/userguide/terminology.html" hreflang="fr" /><link rel="alternative" href="https://docs.aws.amazon.com/it_it/controltower/latest/userguide/terminology.html" hreflang="it-it" /><link rel="alternative" href="https://docs.aws.amazon.com/it_it/controltower/latest/userguide/terminology.html" hreflang="it" /><link rel="alternative" href="https://docs.aws.amazon.com/ja_jp/controltower/latest/userguide/terminology.html" hreflang="ja-jp" /><link rel="alternative" href="https://docs.aws.amazon.com/ja_jp/controltower/latest/userguide/terminology.html" hreflang="ja" /><link rel="alternative" href="https://docs.aws.amazon.com/ko_kr/controltower/latest/userguide/terminology.html" hreflang="ko-kr" /><link rel="alternative" href="https://docs.aws.amazon.com/ko_kr/controltower/latest/userguide/terminology.html" hreflang="ko" /><link rel="alternative" href="https://docs.aws.amazon.com/pt_br/controltower/latest/userguide/terminology.html" hreflang="pt-br" /><link rel="alternative" href="https://docs.aws.amazon.com/pt_br/controltower/latest/userguide/terminology.html" hreflang="pt" /><link rel="alternative" href="https://docs.aws.amazon.com/zh_cn/controltower/latest/userguide/terminology.html" hreflang="zh-cn" /><link rel="alternative" href="https://docs.aws.amazon.com/zh_tw/controltower/latest/userguide/terminology.html" hreflang="zh-tw" /><link rel="alternative" href="https://docs.aws.amazon.com/controltower/latest/userguide/terminology.html" hreflang="x-default" /><meta name="feedback-item" content="Control Tower" /><meta name="this_doc_product" content="AWS Control Tower" /><meta name="this_doc_guide" content="User Guide" /><script defer="" src="/assets/r/vendor4.js?version=2021.12.02"></script><script defer="" src="/assets/r/vendor3.js?version=2021.12.02"></script><script defer="" src="/assets/r/vendor1.js?version=2021.12.02"></script><script defer="" src="/assets/r/awsdocs-common.js?version=2021.12.02"></script><script defer="" src="/assets/r/awsdocs-doc-page.js?version=2021.12.02"></script><link href="/assets/r/vendor4.css?version=2021.12.02" rel="stylesheet" /><link href="/assets/r/awsdocs-common.css?version=2021.12.02" rel="stylesheet" /><link href="/assets/r/awsdocs-doc-page.css?version=2021.12.02" rel="stylesheet" /><script async="" id="awsc-panorama-bundle" type="text/javascript" src="https://prod.pa.cdn.uis.awsstatic.com/panorama-nav-init.js" data-config="{'appEntity':'aws-documentation','region':'us-east-1','service':'controltower'}"></script><meta id="panorama-serviceSubSection" value="User Guide" /><meta id="panorama-serviceConsolePage" value="Terminology" /></head><body class="awsdocs awsui"><div class="awsdocs-container"><awsdocs-header></awsdocs-header><awsui-app-layout id="app-layout" class="awsui-util-no-gutters" ng-controller="ContentController as $ctrl" header-selector="awsdocs-header" navigation-hide="false" navigation-width="$ctrl.navWidth" navigation-open="$ctrl.navOpen" navigation-change="$ctrl.onNavChange($event)" tools-hide="$ctrl.hideTools" tools-width="$ctrl.toolsWidth" tools-open="$ctrl.toolsOpen" tools-change="$ctrl.onToolsChange($event)"><div id="guide-toc" dom-region="navigation"><awsdocs-toc></awsdocs-toc></div><div id="main-column" dom-region="content" tabindex="-1"><awsdocs-view class="awsdocs-view"><div id="awsdocs-content"><head><title>Terminology - AWS Control Tower</title><meta name="pdf" content="/pdfs/controltower/latest/userguide/controltower-ug.pdf#terminology" /><meta name="rss" content="control-tower-guide.rss" /><meta name="forums" content="https://repost.aws/tags/TA8lQh6CBhTq6yxP2OZEkWVg" /><meta name="feedback" content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Control%20Tower&amp;topic_url=https://docs.aws.amazon.com/en_us/controltower/latest/userguide/terminology.html" /><meta name="feedback-yes" content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/en_us/controltower/latest/userguide/terminology.html" /><meta name="feedback-no" content="feedbackno.html?topic_url=https://docs.aws.amazon.com/en_us/controltower/latest/userguide/terminology.html" /><meta name="keywords" content="terminology,terms,AWS Control Tower" /><script type="application/ld+json">
+{
+    "@context" : "https://schema.org",
+    "@type" : "BreadcrumbList",
+    "itemListElement" : [
+      {
+        "@type" : "ListItem",
+        "position" : 1,
+        "name" : "AWS",
+        "item" : "https://aws.amazon.com"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 2,
+        "name" : "AWS Control Tower",
+        "item" : "https://docs.aws.amazon.com/controltower/index.html"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 3,
+        "name" : "User Guide",
+        "item" : "https://docs.aws.amazon.com/controltower/latest/userguide"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 4,
+        "name" : "Terminology",
+        "item" : "https://docs.aws.amazon.com/controltower/latest/userguide/terminology.html"
+      }
+    ]
+}
+</script></head><body><div id="main"><div style="display: none"><a href="/pdfs/controltower/latest/userguide/controltower-ug.pdf#terminology" target="_blank" rel="noopener noreferrer" title="Open PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentation</a><a href="/controltower/index.html">AWS Control Tower</a><a href="what-is-control-tower.html">User Guide</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="terminology">Terminology</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Hereâs a quick review of some terms you'll see in the AWS Control Tower documentation.</p><p>First, it's good to know that AWS Control Tower shares a lot of terminology with the AWS Organizations service, including the terms <em>organization</em>
+        and <em>organizational unit (OU)</em>, which appear throughout
+        this document. </p><div class="itemizedlist">
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+
+    <ul class="itemizedlist"><li class="listitem">
+            <p>For more information about organizations and OUs, see <a href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html">AWS Organizations terminology and concepts</a>. If you're new to AWS Control Tower, that
+                terminology is a good place to begin.</p>
+        </li><li class="listitem">
+            <p>Â <a href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html">AWS Organizations</a> is
+                an AWS service that helps you centrally govern your environment as you grow and
+                scale your workloads on AWS. AWS Control Tower relies on AWS Organizations to create accounts, to
+                enforce preventive controls at the OU level, and to provide centralized
+                billing.</p>
+        </li><li class="listitem">
+            <p>An <a href="https://docs.aws.amazon.com/controltower/latest/userguide/account-factory.html">AWS Account Factory
+                    account</a>Â is an AWS account provisioned usingÂ Account Factory in
+                AWS Control Tower. Sometimes, Account Factory is referred to informally as a âvending
+                machineâ for accounts. </p>
+        </li><li class="listitem">
+            <p>Your AWS Control Tower <a href="https://docs.aws.amazon.com/controltower/latest/userguide/best-practices.html#tips-for-admin-setup">home Region</a> is the AWS Region in which your AWS Control Tower landing zone was
+                deployed. You can view your home Region in your landing zone settings. </p>
+        </li><li class="listitem">
+            <p><a href="https://docs.aws.amazon.com/servicecatalog/latest/adminguide/introduction.html">AWS Service Catalog</a>
+                allows you to manage commonly deployed IT services, centrally. In the context of
+                this document, Account Factory uses AWS Service Catalog to provision new AWS accounts,
+                including accounts from customized blueprints. </p>
+        </li><li class="listitem">
+            <p><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-concepts.html">AWS
+                    CloudFormation StackSetsÂ </a> are a type of resource that extends the
+                functionality of stacks so that you can create, update, or delete stacks across
+                multiple accounts and Regions with a single operation and a single CloudFormation
+                template. </p>
+        </li><li class="listitem">
+            <p>AÂ Â <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-concepts.html#stacksets-concepts-stackinstances">stack instance</a> is a reference to a stack in a target account within a
+                Region. </p>
+        </li><li class="listitem">
+            <p>AÂ <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-whatis-concepts.html#w2ab1b5c15b">stack</a>Â is a collection of AWS resources that you can manage as a
+                single unit. </p>
+        </li><li class="listitem">
+            <p>AnÂ <a href="https://docs.aws.amazon.com/config/latest/developerguide/aggregate-data.html">aggregator</a> is an
+                AWS Config resource type that collects AWS Config configuration and compliance data from
+                multiple accounts and Regions within the organization, allowing you to view and
+                query this compliance data within a single account. </p>
+        </li><li class="listitem">
+            <p>AÂ <a href="https://docs.aws.amazon.com/config/latest/developerguide/conformance-packs.html">conformance
+                    pack</a> is a collection of AWS Config rules and remediation actions that can be
+                deployed as a single entity in an account and a Region, or across an organization in
+                AWS Organizations. You can use a conformance pack to help customize your AWS Control Tower
+                environment. For technical blogs that provide more details, see <a href="https://docs.aws.amazon.com/controltower/latest/userguide/related-information.html#working-existing-organizations">Related information</a>.</p>
+        </li><li class="listitem">
+            <p>A <a href="https://docs.aws.amazon.com/controltower/latest/userguide/types-of-baselines.html">baseline</a> in
+                AWS Control Tower is a group of resources and specific configurations that you can apply to a
+                target. The most common baseline target may be an organizational unit (OU). For
+                example, the baseline called <code class="code">AWSControlTowerBaseline</code> is available to
+                help register your OUs with AWS Control Tower. During landing zone setup and update, the
+                baseline target may be a shared account, or a specific setting for the landing zone
+                as a whole.</p>
+
+            
+        </li><li class="listitem">
+            <p>
+                <b>Blueprint:</b> A blueprint is an artifact that
+                encapsulates some metadata, which describes infrastructure components that are
+                deployed within an account. For example, an AWS CloudFormation template can serve as a blueprint
+                for an AWS Control Tower account.</p>
+        </li><li class="listitem">
+            <p><b>Drift: </b>A change in a resource installed by and
+                configured by AWS Control Tower. Resources without drift enable AWS Control Tower to function
+                properly.</p>
+        </li><li class="listitem">
+            <p><b>Non-compliant resource:</b> A resource that is in
+                violation of an AWS Config rule that defines a particular detective control. </p>
+        </li><li class="listitem">
+            <p><b>Shared account:</b> One of the three accounts that
+                AWS Control Tower creates automatically when you set up your landing zone: the management
+                account, the log archive account, and the audit account. You can choose customized
+                names for the log archive account and the audit account, during setup.</p>
+        </li><li class="listitem">
+            <p><b>Member account:</b> A member account belongs to the
+                AWS Control Tower organization. The member account can be <em>enrolled</em> or <em>unenrolled</em> in
+                AWS Control Tower. When a registered OU contains a mix of enrolled and unenrolled
+                accounts:</p>
+            <div class="itemizedlist">
+                 
+                 
+                
+            <ul class="itemizedlist"><li class="listitem">
+                    <p>Preventive controls enabled on  the OU apply to all
+                        accounts within it, including unenrolled ones. This is true because
+                        preventive controls are enforced with SCPs at the OU level, not the account
+                        level. For more information, see <a href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_inheritance_auth.html">Inheritance for service control policies</a> in the AWS Organizations
+                        documentation.</p>
+                </li><li class="listitem">
+                    <p>Detective controls enabled on the OU do not apply to unenrolled
+                        accounts.</p>
+                </li></ul></div>
+            <p>An account can be a member of only one organization at a time, and its charges are
+                billed to the management account for that organization. A member account can be
+                moved to the root container of an organization.</p>
+        </li><li class="listitem">
+            <p><b>AWS account:</b> An AWS account acts as a
+                resource container and resource isolation boundary. An AWS account can be
+                associated with billing and payment. An AWS account is different than a user
+                account (sometimes called an <a href="https://docs.aws.amazon.com/controltower/latest/userguide/setting-up.html#setting-up-iam">IAM user
+                    account</a>) in AWS Control Tower. Accounts created through the Account Factory
+                provisioning process are AWS accounts. AWS accounts also can be added to
+                AWS Control Tower by means of the account enrollment or OU registration process.</p>
+        </li><li class="listitem">
+            <p><b>Control:</b> A control (also known as a <em>guardrail</em>) is a high-level rule that provides ongoing
+                governance for your overall AWS Control Tower environment. Each control enforces a single
+                rule. Preventive controls are implemented with SCPs. Detective controls are
+                implemented with AWS Config rules. Proactive controls are implemented with AWS CloudFormation hooks.
+                For more information, see <a href="./how-control-tower-works.html#how-controls-work">How controls work</a>.</p>
+        </li><li class="listitem">
+            <p><b>Landing zone:</b> A landing zone is a cloud
+                environment that offers a recommended starting point, including default accounts,
+                account structure, network and security layouts, and so forth. From a landing zone,
+                you can deploy workloads that utilize your solutions and applications.</p>
+        </li><li class="listitem">
+            <p><b>Nested OU:</b> A nested OU in AWS Control Tower is an OU
+                contained within another OU. A nested OU can have exactly one parent OU, and each
+                account can be a member of exactly one OU. Nested OUs create a hierarchy. When you
+                attach a policy to one of the OUs in the hierarchy, it flows down and affects all
+                the OUs and accounts beneath it. A nested OU hierarchy in AWS Control Tower can be a maximum
+                of five levels deep.</p>
+        </li><li class="listitem">
+            <p><b>Parent OU:</b> The OU immediately above the current
+                OU in the hierarchy. Each OU can have exactly one parent OU.</p>
+        </li><li class="listitem">
+            <p><b>Child OU:</b>
+                 Any OU below the
+                current OU in the hierarchy. An OU can have many child OUs.</p>
+            
+        </li><li class="listitem">
+            <p><b>OU hierarchy:</b> In AWS Control Tower, the hierarchy of
+                nested OUs can have up to five levels. The order of nesting is referred to as
+                    <b>Levels</b>. The top of the hierarchy is designated as
+                    <b>Level 1</b>.</p>
+        </li><li class="listitem">
+            <p><b>Top-level OU:</b> A top-level OU is any OU that's
+                directly under the Root, not the Root itself. The Root is not considered an
+                OU.</p>
+        </li><li class="listitem">
+            <p><b>Governed:</b> A governed Region is managed and
+                controlled in your environment by AWS Control Tower, according to the governance policies set
+                by your organization. These AWS Regions are monitored to adhere to best practices
+                and organizational policies. Your resources in these Regions are protected when you enable AWS Control Tower controls.</p>
+        </li><li class="listitem">
+            <p><b>Not governed:</b> Regions that show <b>Not
+                    governed</b> status are not controlled or monitored by AWS Control Tower. These
+                AWS Regions usually do not adhere to the same governance policies that AWS Control Tower
+                enforces. You can create resources in these Regions, but those resources are not protected by AWS Control Tower controls.</p>
+        </li><li class="listitem">
+            <p>
+                <b>Denied:</b> A denied Region is blocked specifically by
+                AWS Control Tower. Within your AWS Control Tower environment, you cannot provision resources in these
+                AWS Regions.</p>
+        </li></ul></div><awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="Warning" /> <strong>Javascript is disabled or is unavailable in your browser.</strong></p><p>To use the Amazon Web Services Documentation, Javascript must be enabled. Please refer to your browser's Help pages for instructions.</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">Document Conventions</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./how-control-tower-works.html">How it works</div><div id="next" class="next-link" accesskey="n" href="./pricing.html">Pricing</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">Did this page help you? - Yes</div><div class="content"><p>Thanks for letting us know we're doing a good job!</p><p>If you've got a moment, please tell us what we did right so we can do more of it.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Control Tower&amp;topic_url=https://docs.aws.amazon.com/en_us/controltower/latest/userguide/terminology.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">Did this page help you? - No</div><div class="content"><p>Thanks for letting us know this page needs work. We're sorry we let you down.</p><p>If you've got a moment, please tell us how we can make the documentation better.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Control Tower&amp;topic_url=https://docs.aws.amazon.com/en_us/controltower/latest/userguide/terminology.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>
+<!DOCTYPE html>
+    <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Pricing - AWS Control Tower</title><meta name="viewport" content="width=device-width,initial-scale=1" /><meta name="assets_root" content="/assets" /><meta name="target_state" content="pricing" /><meta name="default_state" content="pricing" /><link rel="icon" type="image/ico" href="/assets/images/favicon.ico" /><link rel="shortcut icon" type="image/ico" href="/assets/images/favicon.ico" /><link rel="canonical" href="https://docs.aws.amazon.com/controltower/latest/userguide/pricing.html" /><meta name="description" content="Learn about pricing for AWS Control Tower." /><meta name="deployment_region" content="IAD" /><meta name="product" content="AWS Control Tower" /><meta name="guide" content="User Guide" /><meta name="abstract" content="Describes key concepts for AWS Control Tower. Provides instructions for setting up and using a landing zone, a secure and compliant multi-account AWS environment for enterprises or organizations at scale." /><meta name="guide-locale" content="en_us" /><meta name="tocs" content="toc-contents.json" /><link rel="canonical" href="https://docs.aws.amazon.com/controltower/latest/userguide/pricing.html" /><link rel="alternative" href="https://docs.aws.amazon.com/id_id/controltower/latest/userguide/pricing.html" hreflang="id-id" /><link rel="alternative" href="https://docs.aws.amazon.com/id_id/controltower/latest/userguide/pricing.html" hreflang="id" /><link rel="alternative" href="https://docs.aws.amazon.com/de_de/controltower/latest/userguide/pricing.html" hreflang="de-de" /><link rel="alternative" href="https://docs.aws.amazon.com/de_de/controltower/latest/userguide/pricing.html" hreflang="de" /><link rel="alternative" href="https://docs.aws.amazon.com/controltower/latest/userguide/pricing.html" hreflang="en-us" /><link rel="alternative" href="https://docs.aws.amazon.com/controltower/latest/userguide/pricing.html" hreflang="en" /><link rel="alternative" href="https://docs.aws.amazon.com/es_es/controltower/latest/userguide/pricing.html" hreflang="es-es" /><link rel="alternative" href="https://docs.aws.amazon.com/es_es/controltower/latest/userguide/pricing.html" hreflang="es" /><link rel="alternative" href="https://docs.aws.amazon.com/fr_fr/controltower/latest/userguide/pricing.html" hreflang="fr-fr" /><link rel="alternative" href="https://docs.aws.amazon.com/fr_fr/controltower/latest/userguide/pricing.html" hreflang="fr" /><link rel="alternative" href="https://docs.aws.amazon.com/it_it/controltower/latest/userguide/pricing.html" hreflang="it-it" /><link rel="alternative" href="https://docs.aws.amazon.com/it_it/controltower/latest/userguide/pricing.html" hreflang="it" /><link rel="alternative" href="https://docs.aws.amazon.com/ja_jp/controltower/latest/userguide/pricing.html" hreflang="ja-jp" /><link rel="alternative" href="https://docs.aws.amazon.com/ja_jp/controltower/latest/userguide/pricing.html" hreflang="ja" /><link rel="alternative" href="https://docs.aws.amazon.com/ko_kr/controltower/latest/userguide/pricing.html" hreflang="ko-kr" /><link rel="alternative" href="https://docs.aws.amazon.com/ko_kr/controltower/latest/userguide/pricing.html" hreflang="ko" /><link rel="alternative" href="https://docs.aws.amazon.com/pt_br/controltower/latest/userguide/pricing.html" hreflang="pt-br" /><link rel="alternative" href="https://docs.aws.amazon.com/pt_br/controltower/latest/userguide/pricing.html" hreflang="pt" /><link rel="alternative" href="https://docs.aws.amazon.com/zh_cn/controltower/latest/userguide/pricing.html" hreflang="zh-cn" /><link rel="alternative" href="https://docs.aws.amazon.com/zh_tw/controltower/latest/userguide/pricing.html" hreflang="zh-tw" /><link rel="alternative" href="https://docs.aws.amazon.com/controltower/latest/userguide/pricing.html" hreflang="x-default" /><meta name="feedback-item" content="Control Tower" /><meta name="this_doc_product" content="AWS Control Tower" /><meta name="this_doc_guide" content="User Guide" /><script defer="" src="/assets/r/vendor4.js?version=2021.12.02"></script><script defer="" src="/assets/r/vendor3.js?version=2021.12.02"></script><script defer="" src="/assets/r/vendor1.js?version=2021.12.02"></script><script defer="" src="/assets/r/awsdocs-common.js?version=2021.12.02"></script><script defer="" src="/assets/r/awsdocs-doc-page.js?version=2021.12.02"></script><link href="/assets/r/vendor4.css?version=2021.12.02" rel="stylesheet" /><link href="/assets/r/awsdocs-common.css?version=2021.12.02" rel="stylesheet" /><link href="/assets/r/awsdocs-doc-page.css?version=2021.12.02" rel="stylesheet" /><script async="" id="awsc-panorama-bundle" type="text/javascript" src="https://prod.pa.cdn.uis.awsstatic.com/panorama-nav-init.js" data-config="{'appEntity':'aws-documentation','region':'us-east-1','service':'controltower'}"></script><meta id="panorama-serviceSubSection" value="User Guide" /><meta id="panorama-serviceConsolePage" value="Pricing" /></head><body class="awsdocs awsui"><div class="awsdocs-container"><awsdocs-header></awsdocs-header><awsui-app-layout id="app-layout" class="awsui-util-no-gutters" ng-controller="ContentController as $ctrl" header-selector="awsdocs-header" navigation-hide="false" navigation-width="$ctrl.navWidth" navigation-open="$ctrl.navOpen" navigation-change="$ctrl.onNavChange($event)" tools-hide="$ctrl.hideTools" tools-width="$ctrl.toolsWidth" tools-open="$ctrl.toolsOpen" tools-change="$ctrl.onToolsChange($event)"><div id="guide-toc" dom-region="navigation"><awsdocs-toc></awsdocs-toc></div><div id="main-column" dom-region="content" tabindex="-1"><awsdocs-view class="awsdocs-view"><div id="awsdocs-content"><head><title>Pricing - AWS Control Tower</title><meta name="pdf" content="/pdfs/controltower/latest/userguide/controltower-ug.pdf#pricing" /><meta name="rss" content="control-tower-guide.rss" /><meta name="forums" content="https://repost.aws/tags/TA8lQh6CBhTq6yxP2OZEkWVg" /><meta name="feedback" content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Control%20Tower&amp;topic_url=https://docs.aws.amazon.com/en_us/controltower/latest/userguide/pricing.html" /><meta name="feedback-yes" content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/en_us/controltower/latest/userguide/pricing.html" /><meta name="feedback-no" content="feedbackno.html?topic_url=https://docs.aws.amazon.com/en_us/controltower/latest/userguide/pricing.html" /><meta name="keywords" content="pricing,information,AWS Control Tower" /><script type="application/ld+json">
+{
+    "@context" : "https://schema.org",
+    "@type" : "BreadcrumbList",
+    "itemListElement" : [
+      {
+        "@type" : "ListItem",
+        "position" : 1,
+        "name" : "AWS",
+        "item" : "https://aws.amazon.com"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 2,
+        "name" : "AWS Control Tower",
+        "item" : "https://docs.aws.amazon.com/controltower/index.html"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 3,
+        "name" : "User Guide",
+        "item" : "https://docs.aws.amazon.com/controltower/latest/userguide"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 4,
+        "name" : "Pricing",
+        "item" : "https://docs.aws.amazon.com/controltower/latest/userguide/pricing.html"
+      }
+    ]
+}
+</script></head><body><div id="main"><div style="display: none"><a href="/pdfs/controltower/latest/userguide/controltower-ug.pdf#pricing" target="_blank" rel="noopener noreferrer" title="Open PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentation</a><a href="/controltower/index.html">AWS Control Tower</a><a href="what-is-control-tower.html">User Guide</a></div><div id="page-toc-src"></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="pricing">Pricing</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>No additional charge exists for using AWS Control Tower. You only pay for the AWS services enabled
+        by AWS Control Tower, and the services you use in your landing zone. For example, you pay for Service Catalog for
+        provisioning accounts with Account Factory, and AWS CloudTrail for events tracked in your landing zone. For
+        information about the pricing and fees associated with AWS Control Tower, see <a href="https://aws.amazon.com/controltower/pricing" rel="noopener noreferrer" target="_blank"><span>AWS Control Tower pricing</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>.</p><p>If you are running ephemeral workloads from accounts in AWS Control Tower, you may see an increase
+        in costs associated with AWS Config. For details, see <a href="https://aws.amazon.com/config/pricing" rel="noopener noreferrer" target="_blank"><span>AWS Config pricing</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>. Contact your AWS account representative
+        for more specific information about managing these costs. To learn more about how AWS Config works with AWS Control Tower, see <a href="./monitoring-with-config.html">Monitor resource changes with AWS Config</a>.</p>
+
+        
+
+        <p>If you implement AWS CloudTrail trails outside of AWS Control Tower, you can use them with AWS Control Tower.
+            However, you may incur duplicate charges, if you also opt in to trails managed by
+            AWS Control Tower. We do not recommend setting up external trails, unless you have a specific
+            requirement. If you choose to opt in during landing zone setup or update, AWS Control Tower sets
+            up and activates an organization-level CloudTrail trail for you in the management account. For information about managing CloudTrail costs, see <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-trail-manage-costs.html">Managing CloudTrail costs</a>.
+        </p>
+    <awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="Warning" /> <strong>Javascript is disabled or is unavailable in your browser.</strong></p><p>To use the Amazon Web Services Documentation, Javascript must be enabled. Please refer to your browser's Help pages for instructions.</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">Document Conventions</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./terminology.html">Terminology</div><div id="next" class="next-link" accesskey="n" href="./setting-up.html">Setting up</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">Did this page help you? - Yes</div><div class="content"><p>Thanks for letting us know we're doing a good job!</p><p>If you've got a moment, please tell us what we did right so we can do more of it.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Control Tower&amp;topic_url=https://docs.aws.amazon.com/en_us/controltower/latest/userguide/pricing.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">Did this page help you? - No</div><div class="content"><p>Thanks for letting us know this page needs work. We're sorry we let you down.</p><p>If you've got a moment, please tell us how we can make the documentation better.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Control Tower&amp;topic_url=https://docs.aws.amazon.com/en_us/controltower/latest/userguide/pricing.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>
+<!DOCTYPE html>
+    <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Setting up - AWS Control Tower</title><meta name="viewport" content="width=device-width,initial-scale=1" /><meta name="assets_root" content="/assets" /><meta name="target_state" content="setting-up" /><meta name="default_state" content="setting-up" /><link rel="icon" type="image/ico" href="/assets/images/favicon.ico" /><link rel="shortcut icon" type="image/ico" href="/assets/images/favicon.ico" /><link rel="canonical" href="https://docs.aws.amazon.com/controltower/latest/userguide/setting-up.html" /><meta name="description" content="Learn about how to set up and start using the AWS Control Tower service." /><meta name="deployment_region" content="IAD" /><meta name="product" content="AWS Control Tower" /><meta name="guide" content="User Guide" /><meta name="abstract" content="Describes key concepts for AWS Control Tower. Provides instructions for setting up and using a landing zone, a secure and compliant multi-account AWS environment for enterprises or organizations at scale." /><meta name="guide-locale" content="en_us" /><meta name="tocs" content="toc-contents.json" /><link rel="canonical" href="https://docs.aws.amazon.com/controltower/latest/userguide/setting-up.html" /><link rel="alternative" href="https://docs.aws.amazon.com/id_id/controltower/latest/userguide/setting-up.html" hreflang="id-id" /><link rel="alternative" href="https://docs.aws.amazon.com/id_id/controltower/latest/userguide/setting-up.html" hreflang="id" /><link rel="alternative" href="https://docs.aws.amazon.com/de_de/controltower/latest/userguide/setting-up.html" hreflang="de-de" /><link rel="alternative" href="https://docs.aws.amazon.com/de_de/controltower/latest/userguide/setting-up.html" hreflang="de" /><link rel="alternative" href="https://docs.aws.amazon.com/controltower/latest/userguide/setting-up.html" hreflang="en-us" /><link rel="alternative" href="https://docs.aws.amazon.com/controltower/latest/userguide/setting-up.html" hreflang="en" /><link rel="alternative" href="https://docs.aws.amazon.com/es_es/controltower/latest/userguide/setting-up.html" hreflang="es-es" /><link rel="alternative" href="https://docs.aws.amazon.com/es_es/controltower/latest/userguide/setting-up.html" hreflang="es" /><link rel="alternative" href="https://docs.aws.amazon.com/fr_fr/controltower/latest/userguide/setting-up.html" hreflang="fr-fr" /><link rel="alternative" href="https://docs.aws.amazon.com/fr_fr/controltower/latest/userguide/setting-up.html" hreflang="fr" /><link rel="alternative" href="https://docs.aws.amazon.com/it_it/controltower/latest/userguide/setting-up.html" hreflang="it-it" /><link rel="alternative" href="https://docs.aws.amazon.com/it_it/controltower/latest/userguide/setting-up.html" hreflang="it" /><link rel="alternative" href="https://docs.aws.amazon.com/ja_jp/controltower/latest/userguide/setting-up.html" hreflang="ja-jp" /><link rel="alternative" href="https://docs.aws.amazon.com/ja_jp/controltower/latest/userguide/setting-up.html" hreflang="ja" /><link rel="alternative" href="https://docs.aws.amazon.com/ko_kr/controltower/latest/userguide/setting-up.html" hreflang="ko-kr" /><link rel="alternative" href="https://docs.aws.amazon.com/ko_kr/controltower/latest/userguide/setting-up.html" hreflang="ko" /><link rel="alternative" href="https://docs.aws.amazon.com/pt_br/controltower/latest/userguide/setting-up.html" hreflang="pt-br" /><link rel="alternative" href="https://docs.aws.amazon.com/pt_br/controltower/latest/userguide/setting-up.html" hreflang="pt" /><link rel="alternative" href="https://docs.aws.amazon.com/zh_cn/controltower/latest/userguide/setting-up.html" hreflang="zh-cn" /><link rel="alternative" href="https://docs.aws.amazon.com/zh_tw/controltower/latest/userguide/setting-up.html" hreflang="zh-tw" /><link rel="alternative" href="https://docs.aws.amazon.com/controltower/latest/userguide/setting-up.html" hreflang="x-default" /><meta name="feedback-item" content="Control Tower" /><meta name="this_doc_product" content="AWS Control Tower" /><meta name="this_doc_guide" content="User Guide" /><script defer="" src="/assets/r/vendor4.js?version=2021.12.02"></script><script defer="" src="/assets/r/vendor3.js?version=2021.12.02"></script><script defer="" src="/assets/r/vendor1.js?version=2021.12.02"></script><script defer="" src="/assets/r/awsdocs-common.js?version=2021.12.02"></script><script defer="" src="/assets/r/awsdocs-doc-page.js?version=2021.12.02"></script><link href="/assets/r/vendor4.css?version=2021.12.02" rel="stylesheet" /><link href="/assets/r/awsdocs-common.css?version=2021.12.02" rel="stylesheet" /><link href="/assets/r/awsdocs-doc-page.css?version=2021.12.02" rel="stylesheet" /><script async="" id="awsc-panorama-bundle" type="text/javascript" src="https://prod.pa.cdn.uis.awsstatic.com/panorama-nav-init.js" data-config="{'appEntity':'aws-documentation','region':'us-east-1','service':'controltower'}"></script><meta id="panorama-serviceSubSection" value="User Guide" /><meta id="panorama-serviceConsolePage" value="Setting up" /></head><body class="awsdocs awsui"><div class="awsdocs-container"><awsdocs-header></awsdocs-header><awsui-app-layout id="app-layout" class="awsui-util-no-gutters" ng-controller="ContentController as $ctrl" header-selector="awsdocs-header" navigation-hide="false" navigation-width="$ctrl.navWidth" navigation-open="$ctrl.navOpen" navigation-change="$ctrl.onNavChange($event)" tools-hide="$ctrl.hideTools" tools-width="$ctrl.toolsWidth" tools-open="$ctrl.toolsOpen" tools-change="$ctrl.onToolsChange($event)"><div id="guide-toc" dom-region="navigation"><awsdocs-toc></awsdocs-toc></div><div id="main-column" dom-region="content" tabindex="-1"><awsdocs-view class="awsdocs-view"><div id="awsdocs-content"><head><title>Setting up - AWS Control Tower</title><meta name="pdf" content="/pdfs/controltower/latest/userguide/controltower-ug.pdf#setting-up" /><meta name="rss" content="control-tower-guide.rss" /><meta name="forums" content="https://repost.aws/tags/TA8lQh6CBhTq6yxP2OZEkWVg" /><meta name="feedback" content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Control%20Tower&amp;topic_url=https://docs.aws.amazon.com/en_us/controltower/latest/userguide/setting-up.html" /><meta name="feedback-yes" content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/en_us/controltower/latest/userguide/setting-up.html" /><meta name="feedback-no" content="feedbackno.html?topic_url=https://docs.aws.amazon.com/en_us/controltower/latest/userguide/setting-up.html" /><meta name="keywords" content="setup,set,up,setting,AWS Control Tower" /><script type="application/ld+json">
+{
+    "@context" : "https://schema.org",
+    "@type" : "BreadcrumbList",
+    "itemListElement" : [
+      {
+        "@type" : "ListItem",
+        "position" : 1,
+        "name" : "AWS",
+        "item" : "https://aws.amazon.com"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 2,
+        "name" : "AWS Control Tower",
+        "item" : "https://docs.aws.amazon.com/controltower/index.html"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 3,
+        "name" : "User Guide",
+        "item" : "https://docs.aws.amazon.com/controltower/latest/userguide"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 4,
+        "name" : "Setting up",
+        "item" : "https://docs.aws.amazon.com/controltower/latest/userguide/setting-up.html"
+      }
+    ]
+}
+</script></head><body><div id="main"><div style="display: none"><a href="/pdfs/controltower/latest/userguide/controltower-ug.pdf#setting-up" target="_blank" rel="noopener noreferrer" title="Open PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentation</a><a href="/controltower/index.html">AWS Control Tower</a><a href="what-is-control-tower.html">User Guide</a></div><div id="page-toc-src"><a href="#setting-up-signup">Sign up for AWS</a><a href="#setting-up-next-step">Next step</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="setting-up">Setting up</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Before you use AWS Control Tower for the first time, follow the steps in this section to create an AWS account and protect your AWS Control Tower management account. For information on additional setup tasks specifically for AWS Control Tower, see <a href="./getting-started-with-control-tower.html">Getting started with AWS Control Tower</a>.</p>
+    <h2 id="setting-up-signup">Sign up for AWS</h2>
+    <p>When you sign up for Amazon Web Services (AWS), your AWS account is automatically signed
+      up for all services in AWS, including AWS Control Tower. If you have an AWS account already, skip to
+      the next task. If you don't have an AWS account, use the following procedure to create
+      one.</p>
+    
+    <p>Note your AWS account number, because you need it for other tasks.</p>
+    
+    
+
+
+   
+    <h3 id="sign-up-for-aws">Sign up for an AWS account</h3> 
+
+<p>If you do not have an AWS account, complete the following steps to create one.</p>
+<div class="procedure"><h6>To sign up for an AWS account</h6><ol><li><p>Open <a href="https://portal.aws.amazon.com/billing/signup" rel="noopener noreferrer" target="_blank"><span>https://portal.aws.amazon.com/billing/signup</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>.</p>
+  </li><li><p>Follow the online instructions.</p>
+  <p>Part of the sign-up procedure involves receiving a phone call and entering 
+  a verification code on the phone keypad.</p>
+  <p>When you sign up for an AWS account, an <em>AWS account root user</em> is created. The root user has access to all AWS services
+  and resources in the account. As a security best practice, assign administrative access to a user, and use only the root user to perform <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_root-user.html#root-user-tasks">tasks that require root user access</a>.</p>
+  </li></ol></div>
+ <p>AWS sends you a confirmation email after the sign-up process is
+complete. At any time, you can view your current account activity and manage your account by
+going to <a href="https://aws.amazon.com/" rel="noopener noreferrer" target="_blank"><span>https://aws.amazon.com/</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a> and choosing <b>My
+  Account</b>.</p>
+   
+
+
+ 
+<h3 id="create-an-admin">Create a user with administrative access</h3> 
+<p>After you sign up for an AWS account, secure your AWS account root user, enable AWS IAM Identity Center, and create an administrative user so that you 
+don't use the root user for everyday tasks.</p>
+<div class="procedure"><h6>Secure your AWS account root user</h6><ol><li>
+
+
+<p> Sign in to the <a href="https://console.aws.amazon.com/" rel="noopener noreferrer" target="_blank"><span>AWS Management Console</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a> as the account owner by choosing <b>Root user</b> and entering your AWS account email address. On the next page, enter your password.</p>
+ 
+ <p>For help signing in by using root user, see <a href="https://docs.aws.amazon.com/signin/latest/userguide/console-sign-in-tutorials.html#introduction-to-root-user-sign-in-tutorial">Signing in as the root user</a> in the <em>AWS Sign-In User Guide</em>.</p>
+</li><li>
+ <p>Turn on multi-factor authentication (MFA) for your root user.</p>
+ <p>For instructions, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/enable-virt-mfa-for-root.html">Enable a virtual MFA device for your AWS account root user (console)</a> in the <em>IAM User Guide</em>.</p> 
+</li></ol></div>
+<div class="procedure"><h6>Create a user with administrative access</h6><ol><li>
+ <p>Enable IAM Identity Center.</p>
+ <p>For instructions, see <a href="https://docs.aws.amazon.com/singlesignon/latest/userguide/get-set-up-for-idc.html">Enabling
+ AWS IAM Identity Center</a> in the
+ <em>AWS IAM Identity Center User Guide</em>.</p>
+</li><li>
+ <p>In IAM Identity Center, grant administrative access to a user.</p>
+ <p>For a tutorial about using the IAM Identity Center directory as your identity source, see <a href="https://docs.aws.amazon.com/singlesignon/latest/userguide/quick-start-default-idc.html">
+ Configure user access with the default IAM Identity Center directory</a> in the
+ <em>AWS IAM Identity Center User Guide</em>.</p>
+</li></ol></div>
+<div class="procedure"><h6>Sign in as the user with administrative access</h6><ul><li>
+
+<p>To sign in with your IAM Identity Center user, use the sign-in URL that was sent to your email address when you created the IAM Identity Center user.</p>
+
+<p>For help signing in using an IAM Identity Center user, see <a href="https://docs.aws.amazon.com/signin/latest/userguide/iam-id-center-sign-in-tutorial.html">Signing in to the AWS access portal</a> in the <em>AWS Sign-In User Guide</em>.</p>
+</li></ul></div>
+<div class="procedure"><h6>Assign access to additional users</h6><ol><li>
+ <p>In IAM Identity Center, create a permission set that follows the best practice of applying least-privilege permissions.</p>
+ <p>For instructions, see <a href="https://docs.aws.amazon.com/singlesignon/latest/userguide/get-started-create-a-permission-set.html">
+ Create a permission set</a> in the <em>AWS IAM Identity Center User Guide</em>.</p>
+ </li><li>
+ <p>Assign users to a group, and then assign single sign-on access to the group.</p>
+ <p>For instructions, see <a href="https://docs.aws.amazon.com/singlesignon/latest/userguide/addgroups.html">
+ Add groups</a> in the <em>AWS IAM Identity Center User Guide</em>.</p>
+ </li></ol></div>
+ 
+
+
+
+   
+
+ 
+
+
+
+   
+    <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>Security for your accounts</h6></div><div class="awsdocs-note-text"><p>You can find additional guidance about how to set up best practices that protect the security of your
+        AWS Control Tower accounts, in the AWS Organizations documentation.</p><div class="itemizedlist">
+         
+         
+      <ul class="itemizedlist"><li class="listitem">
+          <p><a href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_best-practices_mgmt-acct.html">Best practices for the management account</a></p>
+        </li><li class="listitem">
+          <p><a href="https://docs.aws.amazon.com/organizations/latest/userguide/best-practices_member-acct.html">Best practices for member accounts</a></p>
+        </li></ul></div></div></div>
+    <h2 id="setting-up-next-step">Next step</h2>
+    <p><a href="./getting-started-with-control-tower.html">Getting started with AWS Control Tower</a></p>
+  <awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="Warning" /> <strong>Javascript is disabled or is unavailable in your browser.</strong></p><p>To use the Amazon Web Services Documentation, Javascript must be enabled. Please refer to your browser's Help pages for instructions.</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">Document Conventions</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./pricing.html">Pricing</div><div id="next" class="next-link" accesskey="n" href="./getting-started-with-control-tower.html">Getting started</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">Did this page help you? - Yes</div><div class="content"><p>Thanks for letting us know we're doing a good job!</p><p>If you've got a moment, please tell us what we did right so we can do more of it.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Control Tower&amp;topic_url=https://docs.aws.amazon.com/en_us/controltower/latest/userguide/setting-up.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">Did this page help you? - No</div><div class="content"><p>Thanks for letting us know this page needs work. We're sorry we let you down.</p><p>If you've got a moment, please tell us how we can make the documentation better.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Control Tower&amp;topic_url=https://docs.aws.amazon.com/en_us/controltower/latest/userguide/setting-up.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>
+<!DOCTYPE html>
+    <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Getting started with AWS Control Tower - AWS Control Tower</title><meta name="viewport" content="width=device-width,initial-scale=1" /><meta name="assets_root" content="/assets" /><meta name="target_state" content="getting-started-with-control-tower" /><meta name="default_state" content="getting-started-with-control-tower" /><link rel="icon" type="image/ico" href="/assets/images/favicon.ico" /><link rel="shortcut icon" type="image/ico" href="/assets/images/favicon.ico" /><link rel="canonical" href="https://docs.aws.amazon.com/controltower/latest/userguide/getting-started-with-control-tower.html" /><meta name="description" content="Learn about how to get started with AWS Control Tower." /><meta name="deployment_region" content="IAD" /><meta name="product" content="AWS Control Tower" /><meta name="guide" content="User Guide" /><meta name="abstract" content="Describes key concepts for AWS Control Tower. Provides instructions for setting up and using a landing zone, a secure and compliant multi-account AWS environment for enterprises or organizations at scale." /><meta name="guide-locale" content="en_us" /><meta name="tocs" content="toc-contents.json" /><link rel="canonical" href="https://docs.aws.amazon.com/controltower/latest/userguide/getting-started-with-control-tower.html" /><link rel="alternative" href="https://docs.aws.amazon.com/id_id/controltower/latest/userguide/getting-started-with-control-tower.html" hreflang="id-id" /><link rel="alternative" href="https://docs.aws.amazon.com/id_id/controltower/latest/userguide/getting-started-with-control-tower.html" hreflang="id" /><link rel="alternative" href="https://docs.aws.amazon.com/de_de/controltower/latest/userguide/getting-started-with-control-tower.html" hreflang="de-de" /><link rel="alternative" href="https://docs.aws.amazon.com/de_de/controltower/latest/userguide/getting-started-with-control-tower.html" hreflang="de" /><link rel="alternative" href="https://docs.aws.amazon.com/controltower/latest/userguide/getting-started-with-control-tower.html" hreflang="en-us" /><link rel="alternative" href="https://docs.aws.amazon.com/controltower/latest/userguide/getting-started-with-control-tower.html" hreflang="en" /><link rel="alternative" href="https://docs.aws.amazon.com/es_es/controltower/latest/userguide/getting-started-with-control-tower.html" hreflang="es-es" /><link rel="alternative" href="https://docs.aws.amazon.com/es_es/controltower/latest/userguide/getting-started-with-control-tower.html" hreflang="es" /><link rel="alternative" href="https://docs.aws.amazon.com/fr_fr/controltower/latest/userguide/getting-started-with-control-tower.html" hreflang="fr-fr" /><link rel="alternative" href="https://docs.aws.amazon.com/fr_fr/controltower/latest/userguide/getting-started-with-control-tower.html" hreflang="fr" /><link rel="alternative" href="https://docs.aws.amazon.com/it_it/controltower/latest/userguide/getting-started-with-control-tower.html" hreflang="it-it" /><link rel="alternative" href="https://docs.aws.amazon.com/it_it/controltower/latest/userguide/getting-started-with-control-tower.html" hreflang="it" /><link rel="alternative" href="https://docs.aws.amazon.com/ja_jp/controltower/latest/userguide/getting-started-with-control-tower.html" hreflang="ja-jp" /><link rel="alternative" href="https://docs.aws.amazon.com/ja_jp/controltower/latest/userguide/getting-started-with-control-tower.html" hreflang="ja" /><link rel="alternative" href="https://docs.aws.amazon.com/ko_kr/controltower/latest/userguide/getting-started-with-control-tower.html" hreflang="ko-kr" /><link rel="alternative" href="https://docs.aws.amazon.com/ko_kr/controltower/latest/userguide/getting-started-with-control-tower.html" hreflang="ko" /><link rel="alternative" href="https://docs.aws.amazon.com/pt_br/controltower/latest/userguide/getting-started-with-control-tower.html" hreflang="pt-br" /><link rel="alternative" href="https://docs.aws.amazon.com/pt_br/controltower/latest/userguide/getting-started-with-control-tower.html" hreflang="pt" /><link rel="alternative" href="https://docs.aws.amazon.com/zh_cn/controltower/latest/userguide/getting-started-with-control-tower.html" hreflang="zh-cn" /><link rel="alternative" href="https://docs.aws.amazon.com/zh_tw/controltower/latest/userguide/getting-started-with-control-tower.html" hreflang="zh-tw" /><link rel="alternative" href="https://docs.aws.amazon.com/controltower/latest/userguide/getting-started-with-control-tower.html" hreflang="x-default" /><meta name="feedback-item" content="Control Tower" /><meta name="this_doc_product" content="AWS Control Tower" /><meta name="this_doc_guide" content="User Guide" /><script defer="" src="/assets/r/vendor4.js?version=2021.12.02"></script><script defer="" src="/assets/r/vendor3.js?version=2021.12.02"></script><script defer="" src="/assets/r/vendor1.js?version=2021.12.02"></script><script defer="" src="/assets/r/awsdocs-common.js?version=2021.12.02"></script><script defer="" src="/assets/r/awsdocs-doc-page.js?version=2021.12.02"></script><link href="/assets/r/vendor4.css?version=2021.12.02" rel="stylesheet" /><link href="/assets/r/awsdocs-common.css?version=2021.12.02" rel="stylesheet" /><link href="/assets/r/awsdocs-doc-page.css?version=2021.12.02" rel="stylesheet" /><script async="" id="awsc-panorama-bundle" type="text/javascript" src="https://prod.pa.cdn.uis.awsstatic.com/panorama-nav-init.js" data-config="{'appEntity':'aws-documentation','region':'us-east-1','service':'controltower'}"></script><meta id="panorama-serviceSubSection" value="User Guide" /><meta id="panorama-serviceConsolePage" value="Getting started with AWS Control Tower" /></head><body class="awsdocs awsui"><div class="awsdocs-container"><awsdocs-header></awsdocs-header><awsui-app-layout id="app-layout" class="awsui-util-no-gutters" ng-controller="ContentController as $ctrl" header-selector="awsdocs-header" navigation-hide="false" navigation-width="$ctrl.navWidth" navigation-open="$ctrl.navOpen" navigation-change="$ctrl.onNavChange($event)" tools-hide="$ctrl.hideTools" tools-width="$ctrl.toolsWidth" tools-open="$ctrl.toolsOpen" tools-change="$ctrl.onToolsChange($event)"><div id="guide-toc" dom-region="navigation"><awsdocs-toc></awsdocs-toc></div><div id="main-column" dom-region="content" tabindex="-1"><awsdocs-view class="awsdocs-view"><div id="awsdocs-content"><head><title>Getting started with AWS Control Tower - AWS Control Tower</title><meta name="pdf" content="/pdfs/controltower/latest/userguide/controltower-ug.pdf#getting-started-with-control-tower" /><meta name="rss" content="control-tower-guide.rss" /><meta name="forums" content="https://repost.aws/tags/TA8lQh6CBhTq6yxP2OZEkWVg" /><meta name="feedback" content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Control%20Tower&amp;topic_url=https://docs.aws.amazon.com/en_us/controltower/latest/userguide/getting-started-with-control-tower.html" /><meta name="feedback-yes" content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/en_us/controltower/latest/userguide/getting-started-with-control-tower.html" /><meta name="feedback-no" content="feedbackno.html?topic_url=https://docs.aws.amazon.com/en_us/controltower/latest/userguide/getting-started-with-control-tower.html" /><meta name="keywords" content="get,started,AWS Control Tower" /><script type="application/ld+json">
+{
+    "@context" : "https://schema.org",
+    "@type" : "BreadcrumbList",
+    "itemListElement" : [
+      {
+        "@type" : "ListItem",
+        "position" : 1,
+        "name" : "AWS",
+        "item" : "https://aws.amazon.com"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 2,
+        "name" : "AWS Control Tower",
+        "item" : "https://docs.aws.amazon.com/controltower/index.html"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 3,
+        "name" : "User Guide",
+        "item" : "https://docs.aws.amazon.com/controltower/latest/userguide"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 4,
+        "name" : "Getting started with AWS Control Tower",
+        "item" : "https://docs.aws.amazon.com/controltower/latest/userguide/getting-started-with-control-tower.html"
+      }
+    ]
+}
+</script></head><body><div id="main"><div style="display: none"><a href="/pdfs/controltower/latest/userguide/controltower-ug.pdf#getting-started-with-control-tower" target="_blank" rel="noopener noreferrer" title="Open PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentation</a><a href="/controltower/index.html">AWS Control Tower</a><a href="what-is-control-tower.html">User Guide</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="getting-started-with-control-tower">Getting started with AWS Control Tower</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>This getting started procedure is intended for AWS Control Tower administrators. Follow this
+        procedure when you're ready to set up your landing zone using the AWS Control Tower console or APIs. </p><p>If you are an AWS customer currently, but new to AWS Control Tower, you may wish to review the
+        section called <a href="./planning-your-deployment.html">Plan your AWS Control Tower landing zone</a>, before you proceed.</p><div class="highlights"><h6>Topics</h6><ul><li><a href="./quick-start.html">AWS Control Tower quick start guide</a></li><li><a href="./getting-started-prereqs.html"> Prerequisite: Automated pre-launch checks for
+                your management account </a></li><li><a href="./getting-started-from-console.html"> Get started with AWS Control Tower from the console</a></li><li><a href="./getting-started-apis.html">Get started with AWS Control Tower using APIs</a></li><li><a href="./getting-started-next.html">Next steps</a></li></ul></div><awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="Warning" /> <strong>Javascript is disabled or is unavailable in your browser.</strong></p><p>To use the Amazon Web Services Documentation, Javascript must be enabled. Please refer to your browser's Help pages for instructions.</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">Document Conventions</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./setting-up.html">Setting up</div><div id="next" class="next-link" accesskey="n" href="./quick-start.html">Quick start guide</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">Did this page help you? - Yes</div><div class="content"><p>Thanks for letting us know we're doing a good job!</p><p>If you've got a moment, please tell us what we did right so we can do more of it.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Control Tower&amp;topic_url=https://docs.aws.amazon.com/en_us/controltower/latest/userguide/getting-started-with-control-tower.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">Did this page help you? - No</div><div class="content"><p>Thanks for letting us know this page needs work. We're sorry we let you down.</p><p>If you've got a moment, please tell us how we can make the documentation better.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Control Tower&amp;topic_url=https://docs.aws.amazon.com/en_us/controltower/latest/userguide/getting-started-with-control-tower.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>
