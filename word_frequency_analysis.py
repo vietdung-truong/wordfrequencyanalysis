@@ -9,6 +9,7 @@ from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 from wordcloud import WordCloud
 import matplotlib.pyplot as plt
+import os
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -18,7 +19,6 @@ nltk.download('punkt')
 nltk.download('stopwords')
 nltk.download('wordnet')
 nltk.download('averaged_perceptron_tagger')
-nltk.download('punkt_tab')
 
 def load_text(file_path_or_url):
     """
@@ -28,7 +28,7 @@ def load_text(file_path_or_url):
     logging.info(f'Loading text from {file_path_or_url}')
     if file_path_or_url == 'urllist':
         combined_text = ''
-        with open('urllist', 'r') as url_file:
+        with open('./source/urllist', 'r') as url_file:
             for url in url_file:
                 url = url.strip()
                 if url.startswith('http://') or url.startswith('https://'):
@@ -52,7 +52,7 @@ def save_text_to_file(text, filename):
     Save the given text to a file.
     """
     logging.info(f'Saving text to file: {filename}')
-    with open(filename, 'w', encoding='utf-8') as file:
+    with open(os.path.join('./export', filename), 'w', encoding='utf-8') as file:
         file.write(text)
 
 def clean_text(text):
@@ -116,7 +116,7 @@ def save_wordcloud(word_frequencies, filename="exportedwordcloud.png"):
     """
     logging.info(f'Saving word cloud to {filename}')
     wordcloud = WordCloud(width=800, height=400, background_color='white').generate_from_frequencies(word_frequencies)
-    wordcloud.to_file(filename)
+    wordcloud.to_file(os.path.join('./export', filename))
 
 def main(file_path):
     """
