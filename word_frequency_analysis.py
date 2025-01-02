@@ -11,6 +11,9 @@ from wordcloud import WordCloud
 import matplotlib.pyplot as plt
 import os
 from bs4 import BeautifulSoup
+import plotly.express as px
+import pandas as pd
+
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -120,6 +123,39 @@ def save_wordcloud(word_frequencies, filename="exportedwordcloud.png"):
     wordcloud = WordCloud(width=800, height=400, background_color='white').generate_from_frequencies(word_frequencies)
     wordcloud.to_file(os.path.join('./export', filename))
 
+def generate_plotly_bar_chart(word_frequencies):
+    """
+    Generate and display a bar chart from word frequencies using Plotly.
+    """
+    logging.info('Generating bar chart with Plotly')
+    # Convert the Counter object to a dictionary
+    word_freq_dict = dict(word_frequencies)
+    # Create a DataFrame from the dictionary
+    df = pd.DataFrame(list(word_freq_dict.items()), columns=['Word', 'Frequency'])
+    # Sort the DataFrame by frequency
+    df = df.sort_values(by='Frequency', ascending=False)
+    # Generate the bar chart
+    fig = px.bar(df, x='Word', y='Frequency', title='Word Frequencies')
+    fig.show()
+
+def save_plotly_bar_chart(word_frequencies, filename="exportedbarchart.html", image_filename="exportedbarchart.png"):
+    """
+    Save the Plotly bar chart to a file and as an image.
+    """
+    logging.info(f'Saving Plotly bar chart to {filename} and {image_filename}')
+    # Convert the Counter object to a dictionary
+    word_freq_dict = dict(word_frequencies)
+    # Create a DataFrame from the dictionary
+    df = pd.DataFrame(list(word_freq_dict.items()), columns=['Word', 'Frequency'])
+    # Sort the DataFrame by frequency
+    df = df.sort_values(by='Frequency', ascending=False)
+    # Generate the bar chart
+    fig = px.bar(df, x='Word', y='Frequency', title='Word Frequencies')
+    # Save the bar chart to a file
+    fig.write_html(os.path.join('./export', filename))
+    # Save the bar chart as an image
+    fig.write_image(os.path.join('./export', image_filename))
+
 def main(file_path):
     """
     Main function to load text, clean it, get word frequencies, and generate a word cloud.
@@ -134,7 +170,9 @@ def main(file_path):
         print(f'{word}: {freq}')
 
     generate_wordcloud(word_frequencies)
+    generate_plotly_bar_chart(word_frequencies)
     save_wordcloud(word_frequencies)
+    save_plotly_bar_chart(word_frequencies)
 
 if __name__ == "__main__":
     # Check if the correct number of arguments are provided

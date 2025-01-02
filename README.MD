@@ -13,7 +13,6 @@ Before running the application, install the required dependencies using pip:
 
 ```sh
 pip install -r requirements.txt
-pip install beautifulsoup4
 ```
 
 ## Usage

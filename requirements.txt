@@ -1,2 +1,8 @@
 requests
 nltk
+pandas
+matplotlib
+scikit-learn
+beautifulsoup4
+kaleido
+plotly
