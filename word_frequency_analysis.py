@@ -10,6 +10,7 @@ from nltk.stem import WordNetLemmatizer
 from wordcloud import WordCloud
 import matplotlib.pyplot as plt
 import os
+from bs4 import BeautifulSoup
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -61,8 +62,9 @@ def clean_text(text):
     tokenizing, removing stopwords, and lemmatizing.
     """
     logging.info('Cleaning text')
-    # Remove HTML tags
-    text = re.sub(r'<[^>]+>', '', text)
+    # Parse HTML content and extract text
+    soup = BeautifulSoup(text, 'html.parser')
+    text = soup.get_text()
     
     # Convert to lowercase
     text = text.lower()
@@ -97,7 +99,7 @@ def get_word_frequencies(text):
     words = text.split()
     word_counts = Counter(words)
     filtered_counts = Counter({word: count for word, count in word_counts.items() if count > 1 and word not in excluded_words})
-    return Counter(dict(filtered_counts.most_common(40)))
+    return Counter(dict(filtered_counts.most_common(50)))
 
 def generate_wordcloud(word_frequencies):
     """
