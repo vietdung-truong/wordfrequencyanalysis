@@ -13,7 +13,7 @@ import os
 from bs4 import BeautifulSoup
 import plotly.express as px
 import pandas as pd
-
+from sklearn.feature_extraction.text import TfidfVectorizer
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -104,6 +104,26 @@ def get_word_frequencies(text):
     filtered_counts = Counter({word: count for word, count in word_counts.items() if count > 1 and word not in excluded_words})
     return Counter(dict(filtered_counts.most_common(50)))
 
+def calculate_tfidf(text):
+    """
+    Calculate TF-IDF scores for the given text, excluding certain words.
+    """
+    logging.info('Calculating TF-IDF scores')
+    
+    # Load words to exclude from 'wordfilter' file
+    with open('wordfilter', 'r', encoding='utf-8') as file:
+        excluded_words = set(file.read().splitlines())
+    
+    # Tokenize text and filter out excluded words
+    tokens = text.split()
+    filtered_text = ' '.join([word for word in tokens if word not in excluded_words])
+    
+    vectorizer = TfidfVectorizer(use_idf=True, stop_words='english')
+    tfidf_matrix = vectorizer.fit_transform([filtered_text])
+    feature_names = vectorizer.get_feature_names_out()
+    tfidf_scores = dict(zip(feature_names, tfidf_matrix.toarray()[0]))
+    return Counter(tfidf_scores)
+
 def generate_wordcloud(word_frequencies):
     """
     Generate and display a word cloud from word frequencies.
@@ -156,15 +176,17 @@ def save_plotly_bar_chart(word_frequencies, filename="exportedbarchart.html", im
     # Save the bar chart as an image
     fig.write_image(os.path.join('./export', image_filename))
 
-def save_word_frequencies_to_file(word_frequencies, filename="word_frequencies.csv"):
+def save_word_frequencies_score_to_file(word_frequencies, tfidf_scores, filename="word_frequencies.csv"):
     """
-    Save the word frequencies to a file in table form (CSV format).
+    Save the word frequencies and TF-IDF scores to a file in table form (CSV format).
     """
-    logging.info(f'Saving word frequencies to file: {filename}')
+    logging.info(f'Saving word frequencies and TF-IDF scores to file: {filename}')
     # Convert the Counter object to a dictionary
     word_freq_dict = dict(word_frequencies)
     # Create a DataFrame from the dictionary
     df = pd.DataFrame(list(word_freq_dict.items()), columns=['Word', 'Frequency'])
+    # Add TF-IDF scores to the DataFrame
+    df['TF-IDF'] = df['Word'].apply(lambda word: tfidf_scores.get(word, 0))
     # Save the DataFrame to a CSV file
     df.to_csv(os.path.join('./export', filename), index=False)
 
@@ -177,15 +199,18 @@ def main(file_path):
     save_text_to_file(text, 'lastloadedtext')
     cleaned_text = clean_text(text)
     word_frequencies = get_word_frequencies(cleaned_text)
+    tfidf_scores = calculate_tfidf(cleaned_text)
     
+    print("Word Frequencies and TF-IDF Scores:")
     for word, freq in word_frequencies.most_common():
-        print(f'{word}: {freq}')
-
+        score = tfidf_scores.get(word, 0)
+        print(f'{word}: {freq}, {score:.4f}')
+    
     generate_wordcloud(word_frequencies)
     generate_plotly_bar_chart(word_frequencies)
     save_wordcloud(word_frequencies)
     save_plotly_bar_chart(word_frequencies)
-    save_word_frequencies_to_file(word_frequencies)
+    save_word_frequencies_score_to_file(word_frequencies,tfidf_scores)
 
 if __name__ == "__main__":
     # Check if the correct number of arguments are provided
