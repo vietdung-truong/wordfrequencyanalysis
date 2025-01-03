@@ -176,15 +176,17 @@ def save_plotly_bar_chart(word_frequencies, filename="exportedbarchart.html", im
     # Save the bar chart as an image
     fig.write_image(os.path.join('./export', image_filename))
 
-def save_word_frequencies_to_file(word_frequencies, filename="word_frequencies.csv"):
+def save_word_frequencies_score_to_file(word_frequencies, tfidf_scores, filename="word_frequencies.csv"):
     """
-    Save the word frequencies to a file in table form (CSV format).
+    Save the word frequencies and TF-IDF scores to a file in table form (CSV format).
     """
-    logging.info(f'Saving word frequencies to file: {filename}')
+    logging.info(f'Saving word frequencies and TF-IDF scores to file: {filename}')
     # Convert the Counter object to a dictionary
     word_freq_dict = dict(word_frequencies)
     # Create a DataFrame from the dictionary
     df = pd.DataFrame(list(word_freq_dict.items()), columns=['Word', 'Frequency'])
+    # Add TF-IDF scores to the DataFrame
+    df['TF-IDF'] = df['Word'].apply(lambda word: tfidf_scores.get(word, 0))
     # Save the DataFrame to a CSV file
     df.to_csv(os.path.join('./export', filename), index=False)
 
@@ -208,7 +210,7 @@ def main(file_path):
     generate_plotly_bar_chart(word_frequencies)
     save_wordcloud(word_frequencies)
     save_plotly_bar_chart(word_frequencies)
-    save_word_frequencies_to_file(word_frequencies)
+    save_word_frequencies_score_to_file(word_frequencies,tfidf_scores)
 
 if __name__ == "__main__":
     # Check if the correct number of arguments are provided
