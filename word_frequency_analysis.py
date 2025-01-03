@@ -106,11 +106,20 @@ def get_word_frequencies(text):
 
 def calculate_tfidf(text):
     """
-    Calculate TF-IDF scores for the given text.
+    Calculate TF-IDF scores for the given text, excluding certain words.
     """
     logging.info('Calculating TF-IDF scores')
-    vectorizer = TfidfVectorizer()
-    tfidf_matrix = vectorizer.fit_transform([text])
+    
+    # Load words to exclude from 'wordfilter' file
+    with open('wordfilter', 'r', encoding='utf-8') as file:
+        excluded_words = set(file.read().splitlines())
+    
+    # Tokenize text and filter out excluded words
+    tokens = text.split()
+    filtered_text = ' '.join([word for word in tokens if word not in excluded_words])
+    
+    vectorizer = TfidfVectorizer(use_idf=True, stop_words='english')
+    tfidf_matrix = vectorizer.fit_transform([filtered_text])
     feature_names = vectorizer.get_feature_names_out()
     tfidf_scores = dict(zip(feature_names, tfidf_matrix.toarray()[0]))
     return Counter(tfidf_scores)
@@ -190,13 +199,11 @@ def main(file_path):
     word_frequencies = get_word_frequencies(cleaned_text)
     tfidf_scores = calculate_tfidf(cleaned_text)
     
+    print("Word Frequencies and TF-IDF Scores:")
     for word, freq in word_frequencies.most_common():
-        print(f'{word}: {freq}')
+        score = tfidf_scores.get(word, 0)
+        print(f'{word}: {freq}, {score:.4f}')
     
-    print("\nTF-IDF Scores:")
-    for word, score in tfidf_scores.most_common(50):
-        print(f'{word}: {score:.4f}')
-
     generate_wordcloud(word_frequencies)
     generate_plotly_bar_chart(word_frequencies)
     save_wordcloud(word_frequencies)
