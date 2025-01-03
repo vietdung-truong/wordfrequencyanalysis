@@ -13,7 +13,7 @@ import os
 from bs4 import BeautifulSoup
 import plotly.express as px
 import pandas as pd
-
+from sklearn.feature_extraction.text import TfidfVectorizer
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -104,6 +104,17 @@ def get_word_frequencies(text):
     filtered_counts = Counter({word: count for word, count in word_counts.items() if count > 1 and word not in excluded_words})
     return Counter(dict(filtered_counts.most_common(50)))
 
+def calculate_tfidf(text):
+    """
+    Calculate TF-IDF scores for the given text.
+    """
+    logging.info('Calculating TF-IDF scores')
+    vectorizer = TfidfVectorizer()
+    tfidf_matrix = vectorizer.fit_transform([text])
+    feature_names = vectorizer.get_feature_names_out()
+    tfidf_scores = dict(zip(feature_names, tfidf_matrix.toarray()[0]))
+    return Counter(tfidf_scores)
+
 def generate_wordcloud(word_frequencies):
     """
     Generate and display a word cloud from word frequencies.
@@ -177,9 +188,14 @@ def main(file_path):
     save_text_to_file(text, 'lastloadedtext')
     cleaned_text = clean_text(text)
     word_frequencies = get_word_frequencies(cleaned_text)
+    tfidf_scores = calculate_tfidf(cleaned_text)
     
     for word, freq in word_frequencies.most_common():
         print(f'{word}: {freq}')
+    
+    print("\nTF-IDF Scores:")
+    for word, score in tfidf_scores.most_common(50):
+        print(f'{word}: {score:.4f}')
 
     generate_wordcloud(word_frequencies)
     generate_plotly_bar_chart(word_frequencies)
