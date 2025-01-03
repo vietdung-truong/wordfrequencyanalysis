@@ -146,3 +146,6 @@ allow
 provisioning
 provisioned
 towerawsdocumentationaws
+customer
+recommendation
+consideration
